@@ -11,13 +11,20 @@ repos:
     rev: v5.0.0
     hooks:
       - id: trailing-whitespace
+        exclude: thirdparty/
       - id: check-yaml
+        exclude: thirdparty/
       - id: end-of-file-fixer
+        exclude: thirdparty/
       - id: requirements-txt-fixer
+        exclude: thirdparty/
       - id: check-merge-conflict
+        exclude: thirdparty/
       - id: fix-encoding-pragma
+        exclude: thirdparty/
         args: [ "--remove" ]
       - id: mixed-line-ending
+        exclude: thirdparty/
         args: [ "--fix=lf" ]
   - repo: https://github.com/PyCQA/flake8
     rev: 6.1.0

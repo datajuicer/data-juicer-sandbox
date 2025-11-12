@@ -13,27 +13,27 @@ index c78367d..70adb0c 100644
 +                self.dataset = [json.loads(line.strip()) for line in fin]
 +        else:
 +            self.dataset = json.load(open(json_path, 'r'))
-+
++        
          self.length = len(self.dataset)
          print(f"data scale: {self.length}")
-
+ 
 @@ -183,38 +189,54 @@ class VideoDataset(Dataset):
-
+     
      def get_batch(self, idx):
          video_dict = self.dataset[idx]
 -        video_id, name = video_dict['file_path'], video_dict['text']
 +        video_id, name = video_dict['videos'], video_dict['text']
-
+ 
 -        if self.video_folder is None:
 -            video_dir = video_id
 -        else:
 -            video_dir = os.path.join(self.video_folder, video_id)
 +        if isinstance(video_id, list):
 +            video_id = video_id[0]
-
+ 
 -        with VideoReader_contextmanager(video_dir, num_threads=2) as video_reader:
 -            video_length = len(video_reader)
--
+-        
 -            clip_length = min(video_length, (self.sample_n_frames - 1) * self.sample_stride + 1)
 -            start_idx   = random.randint(0, video_length - clip_length)
 -            batch_index = np.linspace(start_idx, start_idx + clip_length - 1, self.sample_n_frames, dtype=int)
@@ -54,7 +54,7 @@ index c78367d..70adb0c 100644
 -                raise ValueError(f"Read {idx} timeout.")
 -            except Exception as e:
 -                raise ValueError(f"Failed to extract frames from video. Error is {e}.")
-
+ 
 -            if not self.enable_bucket:
 -                pixel_values = torch.from_numpy(pixel_values).permute(0, 3, 1, 2).contiguous()
 -                pixel_values = pixel_values / 255.
@@ -83,7 +83,7 @@ index c78367d..70adb0c 100644
 +            raise ValueError(f"Read {idx} timeout.")
 +        except Exception as e:
 +            raise ValueError(f"Failed to extract frames from video. Error is {e}.")
-
+ 
 -            return pixel_values, name
 +        if not self.enable_bucket:
 +            pixel_values = torch.from_numpy(pixel_values).permute(
@@ -96,11 +96,11 @@ index c78367d..70adb0c 100644
 +                                                         '').strip()
 +
 +        return pixel_values, name
-
+ 
      def __len__(self):
          return self.length
 @@ -259,4 +281,4 @@ if __name__ == "__main__":
-
+ 
      dataloader = torch.utils.data.DataLoader(dataset, batch_size=4, num_workers=0,)
      for idx, batch in enumerate(dataloader):
 -        print(batch["pixel_values"].shape, len(batch["text"]))
@@ -113,7 +113,7 @@ index 00f1b83..bf05590 100644
 @@ -28,10 +28,12 @@ if pkg_resources.parse_version(installed_version) >= pkg_resources.parse_version
  else:
      from diffusers.models.attention_processor import Attention, AttnProcessor2_0
-
+ 
 +from diffusers.models.activations import GEGLU, GELU, ApproximateGELU
  from diffusers.models.attention import AdaLayerNorm, FeedForward
  from diffusers.models.attention_processor import (Attention, AttnProcessor2_0,
@@ -125,7 +125,7 @@ index 00f1b83..bf05590 100644
  from diffusers.utils.import_utils import is_xformers_available
 @@ -1844,3 +1846,60 @@ class HunyuanTemporalTransformerBlock(nn.Module):
              hidden_states = hidden_states + self.ff(mlp_inputs)
-
+ 
          return hidden_states
 +
 +
@@ -579,7 +579,7 @@ index 0000000..25b3377
 +      --mixed_precision=$MIXED_PRECISION \
 +      --save_path=$OUTPUT_VIDEO_DIR \
 +      --seed=$SEED
-+} &
++} &   
 +done
 +
 +wait
@@ -610,8 +610,8 @@ index 5999f95..7cb46a4 100644
 --- a/scripts/train_lora.py
 +++ b/scripts/train_lora.py
 @@ -1480,4 +1480,4 @@ def main():
-
-
+ 
+ 
  if __name__ == "__main__":
 -    main()
 +    main()
@@ -1190,7 +1190,7 @@ index 0000000..96d2f45
 +            "You cannot use both --report_to=wandb and --hub_token due to a security risk of exposing your token."
 +            " Please use `huggingface-cli login` to authenticate with the Hub."
 +        )
-+
++    
 +    if args.report_to == "wandb":
 +        wandb.init(project=args.tracker_project_name, name=args.tracker_experiment_name)
 +

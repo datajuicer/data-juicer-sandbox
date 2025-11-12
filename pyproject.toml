@@ -1,0 +1,93 @@
+[project]
+name = "py-data-juicer-sandbox"
+dynamic = ["version"]
+description = "A Feedback-Driven Suite for Multimodal Data-Model Co-development."
+authors = [
+    {name = "SysML Team of Alibaba Tongyi Lab"}
+]
+readme = "README.md"
+license = {text = "Apache-2.0"}
+requires-python = ">=3.10"
+urls = {repository = "https://github.com/datajuicer/data-juicer-sandbox"}
+classifiers = [
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent"
+]
+
+# Core dependencies
+dependencies = [
+    "py-data-juicer>=1.4.3",  # basic data-juicer
+    "torch==2.6.0",
+    "fire",
+    "pyspark",
+]
+
+[project.optional-dependencies]
+# Development & Tools
+dev = [
+    "coverage",
+    "pre-commit",  # pre-commit hooks
+    "sphinx",
+    "sphinx-autobuild",
+    "sphinx_copybutton",
+    "furo",
+    "myst_parser",
+    "linkify-it-py",
+    "recommonmark",
+    "wandb<=0.19.0",
+    "fire",
+    "click",
+    "toml",  # for yapf configuration
+    "pytest",  # testing framework
+    "pytest-cov",  # coverage reporting
+    "build",  # package building
+    "black>=25.1.0",
+    "flake8-black",
+    "docstring-parser>=0.16",
+    "einops",  # vbench
+]
+
+# All dependencies (default + all optional, except sandbox)
+all = [
+    "py-data-juicer-sandbox[dev]",
+]
+
+[project.scripts]
+dj-sandbox = "data_juicer_sandbox.cli.sandbox_starter:main"
+
+[build-system]
+requires = ["hatchling", "uv>=0.1.0"]
+build-backend = "hatchling.build"
+
+[tool.hatch.version]
+path = "data_juicer_sandbox/__init__.py"
+
+[tool.hatch.build.targets.wheel]
+packages = ["data_juicer_sandbox"]
+include = ["uv.lock", "pyproject.toml"]
+
+[tool.hatch.build]
+include = ["uv.lock", "pyproject.toml"]
+
+[tool.hatch.build.targets.wheel.shared-data]
+"uv.lock" = "uv.lock"
+"pyproject.toml" = "pyproject.toml"
+
+[tool.flake8]
+per-file-ignores = [
+    "*/__init__.py: F401"
+]
+max-line-length = 120
+extend-ignore = [
+    "E203",  # whitespace before ':' (black handles this)
+    "E501",  # line too long (black handles this)
+    "BLK100",  # black would make changes (black handles this)
+]
+
+[tool.black]
+line-length = 120
+target-version = ['py310']
+
+[tool.isort]
+profile = "black"

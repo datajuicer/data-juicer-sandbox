@@ -31,5 +31,6 @@ repos:
 exclude: |
   (?x)^(
     tests/.*|
+    thirdparty/models/.*|
     .*\.md
   )$

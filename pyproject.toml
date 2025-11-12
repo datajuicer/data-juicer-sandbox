@@ -46,6 +46,7 @@ dev = [
     "flake8-black",
     "docstring-parser>=0.16",
     "einops",  # vbench
+    "opencv-python",  # OpenCV
 ]
 
 # All dependencies (default + all optional, except sandbox)

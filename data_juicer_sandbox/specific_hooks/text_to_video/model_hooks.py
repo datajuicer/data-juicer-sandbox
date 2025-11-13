@@ -44,7 +44,7 @@ class EasyAnimateTrainExecutor(BaseModelExecutor):
         cmd = f"cd {self.easyanimate_home} && python install.py"
         self.env.run_cmd(cmd)
         # install extra deepspeed and func_timeout
-        self.env.install_py_deps(["deepspeed", "func_timeout", "wandb"])
+        self.env.install_py_deps(["deepspeed", "func_timeout", "wandb<=0.19.0"])
 
         self.script_path = os.path.join(self.easyanimate_home, "train_lora.sh")
         # make sure executable
@@ -108,7 +108,7 @@ class EasyAnimateInferExecutor(BaseModelExecutor):
         cmd = f"cd {self.easyanimate_home} && python install.py"
         self.env.run_cmd(cmd)
         # install extra deepspeed and func_timeout
-        self.env.install_py_deps(["deepspeed", "func_timeout", "wandb"])
+        self.env.install_py_deps(["deepspeed", "func_timeout", "wandb<=0.19.0"])
 
         self.script_path = os.path.join(self.easyanimate_home, "infer_lora.sh")
 

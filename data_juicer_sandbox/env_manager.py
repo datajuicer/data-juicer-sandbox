@@ -149,6 +149,7 @@ class CondaEnv(Env):
                 raise FileNotFoundError(f"deps path [{deps}] does not exist.")
         elif isinstance(deps, list):
             logger.info(f"Installing Python dependencies [{deps}]...")
+            deps = [f'"{dep}"' for dep in deps]
             cmd = f'{self.env_manager} run -n {self.env_name} pip install {" ".join(deps)}'
         else:
             raise TypeError(f"deps must be a string or a list, got {type(deps)}")
@@ -253,6 +254,7 @@ class VirtualEnv(Env):
             else:
                 raise FileNotFoundError(f"deps path [{deps}] does not exist.")
         elif isinstance(deps, list):
+            deps = [f'"{dep}"' for dep in deps]
             cmd += f' && pip install {" ".join(deps)}'
         else:
             raise TypeError(f"deps must be a string or a list, got {type(deps)}")

@@ -52,61 +52,12 @@ jobs:
         else
           docker compose exec -e OPENAI_BASE_URL=${{ secrets.OPENAI_BASE_URL }} -e OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }} ray-head bash -c 'python tests/run.py --tag standalone --mode regression'
         fi
-        docker compose exec ray-head bash -c 'mv .coverage .coverage.standalone'
+        docker compose exec ray-head bash -c 'coverage report -m'
 
     - name: Upload coverage report of standalone
       uses: actions/upload-artifact@v4
       with:
         name: coverage_report_standalone
-        include-hidden-files: true
-        path: dj-${{ github.run_id }}/.coverage.standalone
-
-    - name: Remove docker compose
-      working-directory: dj-${{ github.run_id }}/.github/workflows/docker
-      if: always()
-      run: |
-        docker compose down --remove-orphans
-
-    - name: Cleanup workspace
-      if: always()
-      run: |
-        rm -rf  dj-${{ github.run_id }}
-
-  combine-coverage:
-    needs: [unittest-single]
-    runs-on: [GPU, unittest]
-    steps:
-    - uses: actions/checkout@v3
-      with:
-        path: dj-${{ github.run_id }}
-        fetch-depth: 0
-
-    - name: Setup docker compose
-      working-directory: dj-${{ github.run_id }}/.github/workflows/docker
-      run: |
-        docker compose up -d
-
-    - name: Install coverage
-      working-directory: dj-${{ github.run_id }}/.github/workflows/docker
-      run: |
-        docker compose exec ray-head bash -c '/root/.local/bin/uv pip install --system coverage'
-
-    - name: Download Coverage Report Standalone
-      uses: actions/download-artifact@v4
-      with:
-        name: coverage_report_standalone
-        path: dj-${{ github.run_id }}
-
-    - name: Combine Coverage Reports
-      working-directory: dj-${{ github.run_id }}/.github/workflows/docker
-      run: |
-        docker compose exec ray-head bash -c 'coverage combine'
-        docker compose exec ray-head bash -c 'coverage report -m'
-
-    - name: Upload Overall Coverage Report
-      uses: actions/upload-artifact@v4
-      with:
-        name: coverage_report_all
         include-hidden-files: true
         path: dj-${{ github.run_id }}/.coverage
 

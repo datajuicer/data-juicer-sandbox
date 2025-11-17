@@ -17,8 +17,8 @@ classifiers = [
 
 # Core dependencies
 dependencies = [
-    "py-data-juicer>=1.4.3",  # basic data-juicer
-    "torch==2.6.0",
+    "py-data-juicer>=1.4.5",  # basic data-juicer
+    "torch==2.8.0",
     "fire",
     "pyspark==3.5.5",
 ]
@@ -66,13 +66,12 @@ path = "data_juicer_sandbox/__init__.py"
 
 [tool.hatch.build.targets.wheel]
 packages = ["data_juicer_sandbox"]
-include = ["uv.lock", "pyproject.toml"]
+include = ["pyproject.toml"]
 
 [tool.hatch.build]
-include = ["uv.lock", "pyproject.toml"]
+include = ["pyproject.toml"]
 
 [tool.hatch.build.targets.wheel.shared-data]
-"uv.lock" = "uv.lock"
 "pyproject.toml" = "pyproject.toml"
 
 [tool.flake8]

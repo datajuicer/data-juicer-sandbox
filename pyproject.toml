@@ -17,7 +17,7 @@ classifiers = [
 
 # Core dependencies
 dependencies = [
-    "py-data-juicer>=1.4.5",  # basic data-juicer
+    "py-data-juicer>=1.4.4",  # basic data-juicer
     "torch==2.8.0",
     "fire",
     "pyspark==3.5.5",

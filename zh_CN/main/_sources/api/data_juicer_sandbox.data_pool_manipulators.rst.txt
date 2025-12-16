@@ -1,0 +1,7 @@
+data\_juicer\_sandbox.data\_pool\_manipulators module
+=====================================================
+
+.. automodule:: data_juicer_sandbox.data_pool_manipulators
+   :members:
+   :show-inheritance:
+   :undoc-members:

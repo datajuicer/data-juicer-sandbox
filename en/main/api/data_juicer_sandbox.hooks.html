@@ -1,0 +1,1012 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>data_juicer_sandbox.hooks module &#8212; Data Juicer Sandbox</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=b26f9bd0" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=8a448e45"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api/data_juicer_sandbox.hooks';</script>
+    <script src="../_static/sidebar.js?v=9ff78125"></script>
+    <link rel="icon" href="../_static/icon.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="data_juicer_sandbox.model_executors module" href="data_juicer_sandbox.model_executors.html" />
+    <link rel="prev" title="data_juicer_sandbox.helper_funcs module" href="data_juicer_sandbox.helper_funcs.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search docs..."
+         aria-label="Search docs..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/icon.png" class="logo__image only-light" alt=""/>
+    <img src="../_static/icon.png" class="logo__image only-dark pst-js-only" alt=""/>
+  
+  
+    <p class="title logo__title">Data Juicer Sandbox</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../docs_index.html">
+    DOCS
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../api.html">
+    API
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://datajuicer.github.io/data-juicer/en/main/">
+    Core
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://datajuicer.github.io/data-juicer-hub/en/main/">
+    Hub
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://datajuicer.github.io/data-juicer-agents/en/main/">
+    Agents
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/datajuicer/data-juicer-sandbox" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><div class="navbar-switcher-container">
+  
+  <div class="navbar-dropdown">
+    <div class="navbar-dropdown-trigger">
+      <span class="dropdown-label">
+        🌐 en
+      </span>
+      <i class="fa-solid fa-chevron-down dropdown-icon"></i>
+    </div>
+    <div class="navbar-dropdown-panel">
+      <div class="dropdown-content">
+        
+        <a href="../../../en/main/api/data_juicer_sandbox.hooks.html"
+           class="dropdown-item active">
+          English
+        </a>
+        
+        <a href="../../../zh_CN/main/api/data_juicer_sandbox.hooks.html"
+           class="dropdown-item ">
+          简体中文
+        </a>
+        
+      </div>
+    </div>
+  </div>
+  
+
+  
+  <div class="navbar-dropdown">
+    <div class="navbar-dropdown-trigger">
+      <span class="dropdown-label">
+        📦 main
+      </span>
+      <i class="fa-solid fa-chevron-down dropdown-icon"></i>
+    </div>
+    <div class="navbar-dropdown-panel">
+      <div class="dropdown-content version-list">
+        
+        <a href="../../main/api/data_juicer_sandbox.hooks.html"
+           class="dropdown-item active">
+          main
+        </a>
+        
+      </div>
+    </div>
+  </div>
+  
+</div></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../docs_index.html">
+    DOCS
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../api.html">
+    API
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://datajuicer.github.io/data-juicer/en/main/">
+    Core
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://datajuicer.github.io/data-juicer-hub/en/main/">
+    Hub
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://datajuicer.github.io/data-juicer-agents/en/main/">
+    Agents
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/datajuicer/data-juicer-sandbox" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><div class="navbar-switcher-container">
+  
+  <div class="navbar-dropdown">
+    <div class="navbar-dropdown-trigger">
+      <span class="dropdown-label">
+        🌐 en
+      </span>
+      <i class="fa-solid fa-chevron-down dropdown-icon"></i>
+    </div>
+    <div class="navbar-dropdown-panel">
+      <div class="dropdown-content">
+        
+        <a href="../../../en/main/api/data_juicer_sandbox.hooks.html"
+           class="dropdown-item active">
+          English
+        </a>
+        
+        <a href="../../../zh_CN/main/api/data_juicer_sandbox.hooks.html"
+           class="dropdown-item ">
+          简体中文
+        </a>
+        
+      </div>
+    </div>
+  </div>
+  
+
+  
+  <div class="navbar-dropdown">
+    <div class="navbar-dropdown-trigger">
+      <span class="dropdown-label">
+        📦 main
+      </span>
+      <i class="fa-solid fa-chevron-down dropdown-icon"></i>
+    </div>
+    <div class="navbar-dropdown-panel">
+      <div class="dropdown-content version-list">
+        
+        <a href="../../main/api/data_juicer_sandbox.hooks.html"
+           class="dropdown-item active">
+          main
+        </a>
+        
+      </div>
+    </div>
+  </div>
+  
+</div></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="data_juicer_sandbox.html">data_juicer_sandbox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_juicer_sandbox.context_infos.html">data_juicer_sandbox.context_infos module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_juicer_sandbox.data_pool_manipulators.html">data_juicer_sandbox.data_pool_manipulators module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_juicer_sandbox.env_manager.html">data_juicer_sandbox.env_manager module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_juicer_sandbox.evaluators.html">data_juicer_sandbox.evaluators module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_juicer_sandbox.factories.html">data_juicer_sandbox.factories module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_juicer_sandbox.helper_funcs.html">data_juicer_sandbox.helper_funcs module</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">data_juicer_sandbox.hooks module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_juicer_sandbox.model_executors.html">data_juicer_sandbox.model_executors module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_juicer_sandbox.pipelines.html">data_juicer_sandbox.pipelines module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_juicer_sandbox.utils.html">data_juicer_sandbox.utils module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">data_juicer_sandbox</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../api.html" class="nav-link">API</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">data_juicer_sandbox.hooks module</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="module-data_juicer_sandbox.hooks">
+<span id="data-juicer-sandbox-hooks-module"></span><h1>data_juicer_sandbox.hooks module<a class="headerlink" href="#module-data_juicer_sandbox.hooks" title="Link to this heading">#</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="data_juicer_sandbox.hooks.BaseHook">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">data_juicer_sandbox.hooks.</span></span><span class="sig-name descname"><span class="pre">BaseHook</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">job_cfg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">watcher</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/data_juicer_sandbox/hooks.html#BaseHook"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#data_juicer_sandbox.hooks.BaseHook" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="data_juicer_sandbox.hooks.BaseHook.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">job_cfg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">watcher</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/data_juicer_sandbox/hooks.html#BaseHook.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#data_juicer_sandbox.hooks.BaseHook.__init__" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="data_juicer_sandbox.hooks.BaseHook.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context_infos</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="data_juicer_sandbox.context_infos.html#data_juicer_sandbox.context_infos.ContextInfos" title="data_juicer_sandbox.context_infos.ContextInfos"><span class="pre">ContextInfos</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/data_juicer_sandbox/hooks.html#BaseHook.run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#data_juicer_sandbox.hooks.BaseHook.run" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="data_juicer_sandbox.hooks.BaseHook.hook">
+<span class="sig-name descname"><span class="pre">hook</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/data_juicer_sandbox/hooks.html#BaseHook.hook"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#data_juicer_sandbox.hooks.BaseHook.hook" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="data_juicer_sandbox.hooks.BaseHook.specify_dj_and_extra_configs">
+<span class="sig-name descname"><span class="pre">specify_dj_and_extra_configs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">allow_fail</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/data_juicer_sandbox/hooks.html#BaseHook.specify_dj_and_extra_configs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#data_juicer_sandbox.hooks.BaseHook.specify_dj_and_extra_configs" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="data_juicer_sandbox.hooks.ProbeViaAnalyzerHook">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">data_juicer_sandbox.hooks.</span></span><span class="sig-name descname"><span class="pre">ProbeViaAnalyzerHook</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">job_cfg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">watcher</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/data_juicer_sandbox/hooks.html#ProbeViaAnalyzerHook"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#data_juicer_sandbox.hooks.ProbeViaAnalyzerHook" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#data_juicer_sandbox.hooks.BaseHook" title="data_juicer_sandbox.hooks.BaseHook"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseHook</span></code></a></p>
+<p>The hook to probe dataset via Data-Juicer Analyzer.</p>
+<dl class="simple">
+<dt>Input:</dt><dd><ul class="simple">
+<li><p>A data-juicer config.</p></li>
+</ul>
+</dd>
+<dt>Output:</dt><dd><ul class="simple">
+<li><p>the path to export the analyzed dataset.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="data_juicer_sandbox.hooks.ProbeViaAnalyzerHook.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">job_cfg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">watcher</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/data_juicer_sandbox/hooks.html#ProbeViaAnalyzerHook.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#data_juicer_sandbox.hooks.ProbeViaAnalyzerHook.__init__" title="Link to this definition">#</a></dt>
+<dd><p>Initialize the hook for probing the data via Analyzer</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>job_cfg</strong> – the job configs</p></li>
+<li><p><strong>watcher</strong> – for watching the result</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="data_juicer_sandbox.hooks.ProbeViaAnalyzerHook.hook">
+<span class="sig-name descname"><span class="pre">hook</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/data_juicer_sandbox/hooks.html#ProbeViaAnalyzerHook.hook"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#data_juicer_sandbox.hooks.ProbeViaAnalyzerHook.hook" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="data_juicer_sandbox.hooks.ProbeViaModelInferHook">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">data_juicer_sandbox.hooks.</span></span><span class="sig-name descname"><span class="pre">ProbeViaModelInferHook</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">job_cfg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">watcher</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/data_juicer_sandbox/hooks.html#ProbeViaModelInferHook"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#data_juicer_sandbox.hooks.ProbeViaModelInferHook" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#data_juicer_sandbox.hooks.BaseHook" title="data_juicer_sandbox.hooks.BaseHook"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseHook</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="data_juicer_sandbox.hooks.ProbeViaModelInferHook.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">job_cfg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">watcher</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/data_juicer_sandbox/hooks.html#ProbeViaModelInferHook.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#data_juicer_sandbox.hooks.ProbeViaModelInferHook.__init__" title="Link to this definition">#</a></dt>
+<dd><p>Initialize the hook for probing the data via Model Infer</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>job_cfg</strong> – the job configs</p></li>
+<li><p><strong>watcher</strong> – for watching the result</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="data_juicer_sandbox.hooks.ProbeViaModelInferHook.hook">
+<span class="sig-name descname"><span class="pre">hook</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/data_juicer_sandbox/hooks.html#ProbeViaModelInferHook.hook"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#data_juicer_sandbox.hooks.ProbeViaModelInferHook.hook" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="data_juicer_sandbox.hooks.GeneralProbeHook">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">data_juicer_sandbox.hooks.</span></span><span class="sig-name descname"><span class="pre">GeneralProbeHook</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">job_cfg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">watcher</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/data_juicer_sandbox/hooks.html#GeneralProbeHook"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#data_juicer_sandbox.hooks.GeneralProbeHook" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#data_juicer_sandbox.hooks.BaseHook" title="data_juicer_sandbox.hooks.BaseHook"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseHook</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="data_juicer_sandbox.hooks.GeneralProbeHook.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">job_cfg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">watcher</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/data_juicer_sandbox/hooks.html#GeneralProbeHook.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#data_juicer_sandbox.hooks.GeneralProbeHook.__init__" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="data_juicer_sandbox.hooks.GeneralProbeHook.hook">
+<span class="sig-name descname"><span class="pre">hook</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/data_juicer_sandbox/hooks.html#GeneralProbeHook.hook"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#data_juicer_sandbox.hooks.GeneralProbeHook.hook" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="data_juicer_sandbox.hooks.RefineRecipeViaKSigmaHook">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">data_juicer_sandbox.hooks.</span></span><span class="sig-name descname"><span class="pre">RefineRecipeViaKSigmaHook</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">job_cfg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">watcher</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/data_juicer_sandbox/hooks.html#RefineRecipeViaKSigmaHook"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#data_juicer_sandbox.hooks.RefineRecipeViaKSigmaHook" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#data_juicer_sandbox.hooks.BaseHook" title="data_juicer_sandbox.hooks.BaseHook"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseHook</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="data_juicer_sandbox.hooks.RefineRecipeViaKSigmaHook.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">job_cfg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">watcher</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/data_juicer_sandbox/hooks.html#RefineRecipeViaKSigmaHook.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#data_juicer_sandbox.hooks.RefineRecipeViaKSigmaHook.__init__" title="Link to this definition">#</a></dt>
+<dd><p>Initialize the hook for refining the recipe via K Sigma</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>job_cfg</strong> – the job configs</p></li>
+<li><p><strong>watcher</strong> – for watching the result</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="data_juicer_sandbox.hooks.RefineRecipeViaKSigmaHook.hook">
+<span class="sig-name descname"><span class="pre">hook</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/data_juicer_sandbox/hooks.html#RefineRecipeViaKSigmaHook.hook"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#data_juicer_sandbox.hooks.RefineRecipeViaKSigmaHook.hook" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="data_juicer_sandbox.hooks.RefineRecipeViaModelFeedbackHook">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">data_juicer_sandbox.hooks.</span></span><span class="sig-name descname"><span class="pre">RefineRecipeViaModelFeedbackHook</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">job_cfg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">watcher</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/data_juicer_sandbox/hooks.html#RefineRecipeViaModelFeedbackHook"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#data_juicer_sandbox.hooks.RefineRecipeViaModelFeedbackHook" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#data_juicer_sandbox.hooks.BaseHook" title="data_juicer_sandbox.hooks.BaseHook"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseHook</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="data_juicer_sandbox.hooks.RefineRecipeViaModelFeedbackHook.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">job_cfg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">watcher</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/data_juicer_sandbox/hooks.html#RefineRecipeViaModelFeedbackHook.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#data_juicer_sandbox.hooks.RefineRecipeViaModelFeedbackHook.__init__" title="Link to this definition">#</a></dt>
+<dd><p>Initialize the hook for refining the recipe via Model Feedback</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>job_cfg</strong> – the job configs</p></li>
+<li><p><strong>watcher</strong> – for watching the result</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="data_juicer_sandbox.hooks.RefineRecipeViaModelFeedbackHook.hook">
+<span class="sig-name descname"><span class="pre">hook</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/data_juicer_sandbox/hooks.html#RefineRecipeViaModelFeedbackHook.hook"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#data_juicer_sandbox.hooks.RefineRecipeViaModelFeedbackHook.hook" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="data_juicer_sandbox.hooks.ProcessDataHook">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">data_juicer_sandbox.hooks.</span></span><span class="sig-name descname"><span class="pre">ProcessDataHook</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">job_cfg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">watcher</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/data_juicer_sandbox/hooks.html#ProcessDataHook"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#data_juicer_sandbox.hooks.ProcessDataHook" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#data_juicer_sandbox.hooks.BaseHook" title="data_juicer_sandbox.hooks.BaseHook"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseHook</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="data_juicer_sandbox.hooks.ProcessDataHook.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">job_cfg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">watcher</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/data_juicer_sandbox/hooks.html#ProcessDataHook.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#data_juicer_sandbox.hooks.ProcessDataHook.__init__" title="Link to this definition">#</a></dt>
+<dd><p>Initialize the hook for processing the data via Data-Juicer</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>job_cfg</strong> – the job configs</p></li>
+<li><p><strong>watcher</strong> – for watching the result</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="data_juicer_sandbox.hooks.ProcessDataHook.hook">
+<span class="sig-name descname"><span class="pre">hook</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/data_juicer_sandbox/hooks.html#ProcessDataHook.hook"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#data_juicer_sandbox.hooks.ProcessDataHook.hook" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="data_juicer_sandbox.hooks.DataPoolManipulationHook">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">data_juicer_sandbox.hooks.</span></span><span class="sig-name descname"><span class="pre">DataPoolManipulationHook</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">job_cfg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">watcher</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/data_juicer_sandbox/hooks.html#DataPoolManipulationHook"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#data_juicer_sandbox.hooks.DataPoolManipulationHook" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#data_juicer_sandbox.hooks.BaseHook" title="data_juicer_sandbox.hooks.BaseHook"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseHook</span></code></a></p>
+<p>Hook for data pool manipulation, including construction, combination, ranking, etc.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="data_juicer_sandbox.hooks.DataPoolManipulationHook.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">job_cfg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">watcher</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/data_juicer_sandbox/hooks.html#DataPoolManipulationHook.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#data_juicer_sandbox.hooks.DataPoolManipulationHook.__init__" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="data_juicer_sandbox.hooks.DataPoolManipulationHook.hook">
+<span class="sig-name descname"><span class="pre">hook</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/data_juicer_sandbox/hooks.html#DataPoolManipulationHook.hook"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#data_juicer_sandbox.hooks.DataPoolManipulationHook.hook" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="data_juicer_sandbox.hooks.GeneralDataExecutorHook">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">data_juicer_sandbox.hooks.</span></span><span class="sig-name descname"><span class="pre">GeneralDataExecutorHook</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">job_cfg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">watcher</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/data_juicer_sandbox/hooks.html#GeneralDataExecutorHook"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#data_juicer_sandbox.hooks.GeneralDataExecutorHook" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#data_juicer_sandbox.hooks.BaseHook" title="data_juicer_sandbox.hooks.BaseHook"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseHook</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="data_juicer_sandbox.hooks.GeneralDataExecutorHook.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">job_cfg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">watcher</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/data_juicer_sandbox/hooks.html#GeneralDataExecutorHook.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#data_juicer_sandbox.hooks.GeneralDataExecutorHook.__init__" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="data_juicer_sandbox.hooks.GeneralDataExecutorHook.hook">
+<span class="sig-name descname"><span class="pre">hook</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/data_juicer_sandbox/hooks.html#GeneralDataExecutorHook.hook"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#data_juicer_sandbox.hooks.GeneralDataExecutorHook.hook" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="data_juicer_sandbox.hooks.TrainModelHook">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">data_juicer_sandbox.hooks.</span></span><span class="sig-name descname"><span class="pre">TrainModelHook</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">job_cfg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">watcher</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/data_juicer_sandbox/hooks.html#TrainModelHook"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#data_juicer_sandbox.hooks.TrainModelHook" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#data_juicer_sandbox.hooks.BaseHook" title="data_juicer_sandbox.hooks.BaseHook"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseHook</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="data_juicer_sandbox.hooks.TrainModelHook.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">job_cfg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">watcher</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/data_juicer_sandbox/hooks.html#TrainModelHook.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#data_juicer_sandbox.hooks.TrainModelHook.__init__" title="Link to this definition">#</a></dt>
+<dd><p>Initialize the hook for model training</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>job_cfg</strong> – the job configs</p></li>
+<li><p><strong>watcher</strong> – for watching the result</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="data_juicer_sandbox.hooks.TrainModelHook.hook">
+<span class="sig-name descname"><span class="pre">hook</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/data_juicer_sandbox/hooks.html#TrainModelHook.hook"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#data_juicer_sandbox.hooks.TrainModelHook.hook" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="data_juicer_sandbox.hooks.InferModelHook">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">data_juicer_sandbox.hooks.</span></span><span class="sig-name descname"><span class="pre">InferModelHook</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">job_cfg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">watcher</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/data_juicer_sandbox/hooks.html#InferModelHook"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#data_juicer_sandbox.hooks.InferModelHook" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#data_juicer_sandbox.hooks.BaseHook" title="data_juicer_sandbox.hooks.BaseHook"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseHook</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="data_juicer_sandbox.hooks.InferModelHook.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">job_cfg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">watcher</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/data_juicer_sandbox/hooks.html#InferModelHook.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#data_juicer_sandbox.hooks.InferModelHook.__init__" title="Link to this definition">#</a></dt>
+<dd><p>Initialize the hook for model training</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>job_cfg</strong> – the job configs</p></li>
+<li><p><strong>watcher</strong> – for watching the result</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="data_juicer_sandbox.hooks.InferModelHook.hook">
+<span class="sig-name descname"><span class="pre">hook</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/data_juicer_sandbox/hooks.html#InferModelHook.hook"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#data_juicer_sandbox.hooks.InferModelHook.hook" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="data_juicer_sandbox.hooks.EvaluateDataHook">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">data_juicer_sandbox.hooks.</span></span><span class="sig-name descname"><span class="pre">EvaluateDataHook</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">job_cfg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">watcher</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/data_juicer_sandbox/hooks.html#EvaluateDataHook"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#data_juicer_sandbox.hooks.EvaluateDataHook" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#data_juicer_sandbox.hooks.BaseHook" title="data_juicer_sandbox.hooks.BaseHook"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseHook</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="data_juicer_sandbox.hooks.EvaluateDataHook.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">job_cfg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">watcher</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/data_juicer_sandbox/hooks.html#EvaluateDataHook.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#data_juicer_sandbox.hooks.EvaluateDataHook.__init__" title="Link to this definition">#</a></dt>
+<dd><p>Initialize the hook for data evaluation</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>job_cfg</strong> – the job configs</p></li>
+<li><p><strong>watcher</strong> – for watching the result</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="data_juicer_sandbox.hooks.EvaluateDataHook.hook">
+<span class="sig-name descname"><span class="pre">hook</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/data_juicer_sandbox/hooks.html#EvaluateDataHook.hook"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#data_juicer_sandbox.hooks.EvaluateDataHook.hook" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="data_juicer_sandbox.hooks.EvaluateModelHook">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">data_juicer_sandbox.hooks.</span></span><span class="sig-name descname"><span class="pre">EvaluateModelHook</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">job_cfg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">watcher</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/data_juicer_sandbox/hooks.html#EvaluateModelHook"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#data_juicer_sandbox.hooks.EvaluateModelHook" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#data_juicer_sandbox.hooks.BaseHook" title="data_juicer_sandbox.hooks.BaseHook"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseHook</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="data_juicer_sandbox.hooks.EvaluateModelHook.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">job_cfg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">watcher</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/data_juicer_sandbox/hooks.html#EvaluateModelHook.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#data_juicer_sandbox.hooks.EvaluateModelHook.__init__" title="Link to this definition">#</a></dt>
+<dd><p>Initialize the hook for model evaluation</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>job_cfg</strong> – the job configs</p></li>
+<li><p><strong>watcher</strong> – for watching the result</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="data_juicer_sandbox.hooks.EvaluateModelHook.hook">
+<span class="sig-name descname"><span class="pre">hook</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/data_juicer_sandbox/hooks.html#EvaluateModelHook.hook"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#data_juicer_sandbox.hooks.EvaluateModelHook.hook" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="data_juicer_sandbox.hooks.register_hook">
+<span class="sig-prename descclassname"><span class="pre">data_juicer_sandbox.hooks.</span></span><span class="sig-name descname"><span class="pre">register_hook</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">job_cfg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">watcher</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/data_juicer_sandbox/hooks.html#register_hook"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#data_juicer_sandbox.hooks.register_hook" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="data_juicer_sandbox.helper_funcs.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">data_juicer_sandbox.helper_funcs module</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="data_juicer_sandbox.model_executors.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">data_juicer_sandbox.model_executors module</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data_juicer_sandbox.hooks.BaseHook"><code class="docutils literal notranslate"><span class="pre">BaseHook</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data_juicer_sandbox.hooks.BaseHook.__init__"><code class="docutils literal notranslate"><span class="pre">BaseHook.__init__()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data_juicer_sandbox.hooks.BaseHook.run"><code class="docutils literal notranslate"><span class="pre">BaseHook.run()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data_juicer_sandbox.hooks.BaseHook.hook"><code class="docutils literal notranslate"><span class="pre">BaseHook.hook()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data_juicer_sandbox.hooks.BaseHook.specify_dj_and_extra_configs"><code class="docutils literal notranslate"><span class="pre">BaseHook.specify_dj_and_extra_configs()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data_juicer_sandbox.hooks.ProbeViaAnalyzerHook"><code class="docutils literal notranslate"><span class="pre">ProbeViaAnalyzerHook</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data_juicer_sandbox.hooks.ProbeViaAnalyzerHook.__init__"><code class="docutils literal notranslate"><span class="pre">ProbeViaAnalyzerHook.__init__()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data_juicer_sandbox.hooks.ProbeViaAnalyzerHook.hook"><code class="docutils literal notranslate"><span class="pre">ProbeViaAnalyzerHook.hook()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data_juicer_sandbox.hooks.ProbeViaModelInferHook"><code class="docutils literal notranslate"><span class="pre">ProbeViaModelInferHook</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data_juicer_sandbox.hooks.ProbeViaModelInferHook.__init__"><code class="docutils literal notranslate"><span class="pre">ProbeViaModelInferHook.__init__()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data_juicer_sandbox.hooks.ProbeViaModelInferHook.hook"><code class="docutils literal notranslate"><span class="pre">ProbeViaModelInferHook.hook()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data_juicer_sandbox.hooks.GeneralProbeHook"><code class="docutils literal notranslate"><span class="pre">GeneralProbeHook</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data_juicer_sandbox.hooks.GeneralProbeHook.__init__"><code class="docutils literal notranslate"><span class="pre">GeneralProbeHook.__init__()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data_juicer_sandbox.hooks.GeneralProbeHook.hook"><code class="docutils literal notranslate"><span class="pre">GeneralProbeHook.hook()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data_juicer_sandbox.hooks.RefineRecipeViaKSigmaHook"><code class="docutils literal notranslate"><span class="pre">RefineRecipeViaKSigmaHook</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data_juicer_sandbox.hooks.RefineRecipeViaKSigmaHook.__init__"><code class="docutils literal notranslate"><span class="pre">RefineRecipeViaKSigmaHook.__init__()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data_juicer_sandbox.hooks.RefineRecipeViaKSigmaHook.hook"><code class="docutils literal notranslate"><span class="pre">RefineRecipeViaKSigmaHook.hook()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data_juicer_sandbox.hooks.RefineRecipeViaModelFeedbackHook"><code class="docutils literal notranslate"><span class="pre">RefineRecipeViaModelFeedbackHook</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data_juicer_sandbox.hooks.RefineRecipeViaModelFeedbackHook.__init__"><code class="docutils literal notranslate"><span class="pre">RefineRecipeViaModelFeedbackHook.__init__()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data_juicer_sandbox.hooks.RefineRecipeViaModelFeedbackHook.hook"><code class="docutils literal notranslate"><span class="pre">RefineRecipeViaModelFeedbackHook.hook()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data_juicer_sandbox.hooks.ProcessDataHook"><code class="docutils literal notranslate"><span class="pre">ProcessDataHook</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data_juicer_sandbox.hooks.ProcessDataHook.__init__"><code class="docutils literal notranslate"><span class="pre">ProcessDataHook.__init__()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data_juicer_sandbox.hooks.ProcessDataHook.hook"><code class="docutils literal notranslate"><span class="pre">ProcessDataHook.hook()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data_juicer_sandbox.hooks.DataPoolManipulationHook"><code class="docutils literal notranslate"><span class="pre">DataPoolManipulationHook</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data_juicer_sandbox.hooks.DataPoolManipulationHook.__init__"><code class="docutils literal notranslate"><span class="pre">DataPoolManipulationHook.__init__()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data_juicer_sandbox.hooks.DataPoolManipulationHook.hook"><code class="docutils literal notranslate"><span class="pre">DataPoolManipulationHook.hook()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data_juicer_sandbox.hooks.GeneralDataExecutorHook"><code class="docutils literal notranslate"><span class="pre">GeneralDataExecutorHook</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data_juicer_sandbox.hooks.GeneralDataExecutorHook.__init__"><code class="docutils literal notranslate"><span class="pre">GeneralDataExecutorHook.__init__()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data_juicer_sandbox.hooks.GeneralDataExecutorHook.hook"><code class="docutils literal notranslate"><span class="pre">GeneralDataExecutorHook.hook()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data_juicer_sandbox.hooks.TrainModelHook"><code class="docutils literal notranslate"><span class="pre">TrainModelHook</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data_juicer_sandbox.hooks.TrainModelHook.__init__"><code class="docutils literal notranslate"><span class="pre">TrainModelHook.__init__()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data_juicer_sandbox.hooks.TrainModelHook.hook"><code class="docutils literal notranslate"><span class="pre">TrainModelHook.hook()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data_juicer_sandbox.hooks.InferModelHook"><code class="docutils literal notranslate"><span class="pre">InferModelHook</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data_juicer_sandbox.hooks.InferModelHook.__init__"><code class="docutils literal notranslate"><span class="pre">InferModelHook.__init__()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data_juicer_sandbox.hooks.InferModelHook.hook"><code class="docutils literal notranslate"><span class="pre">InferModelHook.hook()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data_juicer_sandbox.hooks.EvaluateDataHook"><code class="docutils literal notranslate"><span class="pre">EvaluateDataHook</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data_juicer_sandbox.hooks.EvaluateDataHook.__init__"><code class="docutils literal notranslate"><span class="pre">EvaluateDataHook.__init__()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data_juicer_sandbox.hooks.EvaluateDataHook.hook"><code class="docutils literal notranslate"><span class="pre">EvaluateDataHook.hook()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data_juicer_sandbox.hooks.EvaluateModelHook"><code class="docutils literal notranslate"><span class="pre">EvaluateModelHook</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data_juicer_sandbox.hooks.EvaluateModelHook.__init__"><code class="docutils literal notranslate"><span class="pre">EvaluateModelHook.__init__()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data_juicer_sandbox.hooks.EvaluateModelHook.hook"><code class="docutils literal notranslate"><span class="pre">EvaluateModelHook.hook()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data_juicer_sandbox.hooks.register_hook"><code class="docutils literal notranslate"><span class="pre">register_hook()</span></code></a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/api/data_juicer_sandbox.hooks.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2024, Data-Juicer Team.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    <br/>
+  </p>
+</div>
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

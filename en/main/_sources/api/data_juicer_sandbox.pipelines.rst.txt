@@ -1,0 +1,7 @@
+data\_juicer\_sandbox.pipelines module
+======================================
+
+.. automodule:: data_juicer_sandbox.pipelines
+   :members:
+   :show-inheritance:
+   :undoc-members:

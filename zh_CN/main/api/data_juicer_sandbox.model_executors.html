@@ -1,0 +1,932 @@
+
+<!DOCTYPE html>
+
+
+<html lang="zh-CN" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>data_juicer_sandbox.model_executors module &#8212; Data Juicer Sandbox</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=b26f9bd0" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=91bfbbb6"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/translations.js?v=beaddf03"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'api/data_juicer_sandbox.model_executors';</script>
+    <script src="../_static/sidebar.js?v=9ff78125"></script>
+    <link rel="icon" href="../_static/icon.png"/>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="data_juicer_sandbox.pipelines module" href="data_juicer_sandbox.pipelines.html" />
+    <link rel="prev" title="data_juicer_sandbox.hooks module" href="data_juicer_sandbox.hooks.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="zh-CN"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">跳转至主要内容</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>回到顶部</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search docs..."
+         aria-label="Search docs..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="版本警告"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="网页导航">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index_ZH.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/icon.png" class="logo__image only-light" alt=""/>
+    <img src="../_static/icon.png" class="logo__image only-dark pst-js-only" alt=""/>
+  
+  
+    <p class="title logo__title">Data Juicer Sandbox</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../docs_index_ZH.html">
+    文档
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../api.html">
+    API
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://datajuicer.github.io/data-juicer/zh_CN/main/">
+    Core
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://datajuicer.github.io/data-juicer-hub/zh_CN/main/">
+    Hub
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://datajuicer.github.io/data-juicer-agents/zh_CN/main/">
+    Agents
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="搜索" aria-label="搜索" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/datajuicer/data-juicer-sandbox" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="亮色"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="暗色"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><div class="navbar-switcher-container">
+  
+  <div class="navbar-dropdown">
+    <div class="navbar-dropdown-trigger">
+      <span class="dropdown-label">
+        🌐 zh-CN
+      </span>
+      <i class="fa-solid fa-chevron-down dropdown-icon"></i>
+    </div>
+    <div class="navbar-dropdown-panel">
+      <div class="dropdown-content">
+        
+        <a href="../../../en/main/api/data_juicer_sandbox.model_executors.html"
+           class="dropdown-item ">
+          English
+        </a>
+        
+        <a href="../../../zh_CN/main/api/data_juicer_sandbox.model_executors.html"
+           class="dropdown-item ">
+          简体中文
+        </a>
+        
+      </div>
+    </div>
+  </div>
+  
+
+  
+  <div class="navbar-dropdown">
+    <div class="navbar-dropdown-trigger">
+      <span class="dropdown-label">
+        📦 main
+      </span>
+      <i class="fa-solid fa-chevron-down dropdown-icon"></i>
+    </div>
+    <div class="navbar-dropdown-panel">
+      <div class="dropdown-content version-list">
+        
+        <a href="../../main/api/data_juicer_sandbox.model_executors.html"
+           class="dropdown-item active">
+          main
+        </a>
+        
+      </div>
+    </div>
+  </div>
+  
+</div></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="搜索" aria-label="搜索" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="当前页面">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../docs_index_ZH.html">
+    文档
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../api.html">
+    API
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://datajuicer.github.io/data-juicer/zh_CN/main/">
+    Core
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://datajuicer.github.io/data-juicer-hub/zh_CN/main/">
+    Hub
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://datajuicer.github.io/data-juicer-agents/zh_CN/main/">
+    Agents
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/datajuicer/data-juicer-sandbox" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="亮色"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="暗色"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><div class="navbar-switcher-container">
+  
+  <div class="navbar-dropdown">
+    <div class="navbar-dropdown-trigger">
+      <span class="dropdown-label">
+        🌐 zh-CN
+      </span>
+      <i class="fa-solid fa-chevron-down dropdown-icon"></i>
+    </div>
+    <div class="navbar-dropdown-panel">
+      <div class="dropdown-content">
+        
+        <a href="../../../en/main/api/data_juicer_sandbox.model_executors.html"
+           class="dropdown-item ">
+          English
+        </a>
+        
+        <a href="../../../zh_CN/main/api/data_juicer_sandbox.model_executors.html"
+           class="dropdown-item ">
+          简体中文
+        </a>
+        
+      </div>
+    </div>
+  </div>
+  
+
+  
+  <div class="navbar-dropdown">
+    <div class="navbar-dropdown-trigger">
+      <span class="dropdown-label">
+        📦 main
+      </span>
+      <i class="fa-solid fa-chevron-down dropdown-icon"></i>
+    </div>
+    <div class="navbar-dropdown-panel">
+      <div class="dropdown-content version-list">
+        
+        <a href="../../main/api/data_juicer_sandbox.model_executors.html"
+           class="dropdown-item active">
+          main
+        </a>
+        
+      </div>
+    </div>
+  </div>
+  
+</div></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="章节导航">
+  <p class="bd-links__title" role="heading" aria-level="1">章节导航</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="data_juicer_sandbox.html">data_juicer_sandbox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_juicer_sandbox.context_infos.html">data_juicer_sandbox.context_infos module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_juicer_sandbox.data_pool_manipulators.html">data_juicer_sandbox.data_pool_manipulators module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_juicer_sandbox.env_manager.html">data_juicer_sandbox.env_manager module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_juicer_sandbox.evaluators.html">data_juicer_sandbox.evaluators module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_juicer_sandbox.factories.html">data_juicer_sandbox.factories module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_juicer_sandbox.helper_funcs.html">data_juicer_sandbox.helper_funcs module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_juicer_sandbox.hooks.html">data_juicer_sandbox.hooks module</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">data_juicer_sandbox.model_executors module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_juicer_sandbox.pipelines.html">data_juicer_sandbox.pipelines module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="data_juicer_sandbox.utils.html">data_juicer_sandbox.utils module</a></li>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">data_juicer_sandbox</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index_ZH.html" class="nav-link" aria-label="初始页面">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../api.html" class="nav-link">API</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">data_juicer_sandbox.model_executors module</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="module-data_juicer_sandbox.model_executors">
+<span id="data-juicer-sandbox-model-executors-module"></span><h1>data_juicer_sandbox.model_executors module<a class="headerlink" href="#module-data_juicer_sandbox.model_executors" title="Link to this heading">#</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="data_juicer_sandbox.model_executors.BaseModelExecutor">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">data_juicer_sandbox.model_executors.</span></span><span class="sig-name descname"><span class="pre">BaseModelExecutor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">watcher</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/data_juicer_sandbox/model_executors.html#BaseModelExecutor"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#data_juicer_sandbox.model_executors.BaseModelExecutor" title="Link to this definition">#</a></dt>
+<dd><p>基类：<code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Base abstraction for model executor within the DataJuicer's sandbox</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="data_juicer_sandbox.model_executors.BaseModelExecutor.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">watcher</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/data_juicer_sandbox/model_executors.html#BaseModelExecutor.__init__"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#data_juicer_sandbox.model_executors.BaseModelExecutor.__init__" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="data_juicer_sandbox.model_executors.BaseModelExecutor.run">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">run_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">run_obj</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/data_juicer_sandbox/model_executors.html#BaseModelExecutor.run"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#data_juicer_sandbox.model_executors.BaseModelExecutor.run" title="Link to this definition">#</a></dt>
+<dd><dl class="simple">
+<dt>conduct some model-related execution tasks</dt><dd><p>given specified run_type and run_obj</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="data_juicer_sandbox.model_executors.BaseModelExecutor.run_subprocess">
+<span class="sig-name descname"><span class="pre">run_subprocess</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">script_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">run_args</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">working_dir</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cmd</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'bash'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/data_juicer_sandbox/model_executors.html#BaseModelExecutor.run_subprocess"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#data_juicer_sandbox.model_executors.BaseModelExecutor.run_subprocess" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="data_juicer_sandbox.model_executors.BaseModelExecutor.watch_run">
+<em class="property"><span class="k"><span class="pre">async</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">watch_run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">run_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">run_obj</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/data_juicer_sandbox/model_executors.html#BaseModelExecutor.watch_run"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#data_juicer_sandbox.model_executors.BaseModelExecutor.watch_run" title="Link to this definition">#</a></dt>
+<dd><dl class="simple">
+<dt>watch the running process in an online manner, and</dt><dd><p>return the summarized results</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="data_juicer_sandbox.model_executors.BaseModelExecutor.data_connector">
+<span class="sig-name descname"><span class="pre">data_connector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_data</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/data_juicer_sandbox/model_executors.html#BaseModelExecutor.data_connector"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#data_juicer_sandbox.model_executors.BaseModelExecutor.data_connector" title="Link to this definition">#</a></dt>
+<dd><dl class="simple">
+<dt>convert input_data (usually in Data-Juicer's Dataset format) into</dt><dd><p>the appropriate format for specific model executor</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="data_juicer_sandbox.model_executors.ModelScopeExecutor">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">data_juicer_sandbox.model_executors.</span></span><span class="sig-name descname"><span class="pre">ModelScopeExecutor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">watcher</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/data_juicer_sandbox/model_executors.html#ModelScopeExecutor"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#data_juicer_sandbox.model_executors.ModelScopeExecutor" title="Link to this definition">#</a></dt>
+<dd><p>基类：<a class="reference internal" href="#data_juicer_sandbox.model_executors.BaseModelExecutor" title="data_juicer_sandbox.model_executors.BaseModelExecutor"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModelExecutor</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="data_juicer_sandbox.model_executors.ModelScopeExecutor.data_connector">
+<span class="sig-name descname"><span class="pre">data_connector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">split</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'train'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">key_remapping</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/data_juicer_sandbox/model_executors.html#ModelScopeExecutor.data_connector"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#data_juicer_sandbox.model_executors.ModelScopeExecutor.data_connector" title="Link to this definition">#</a></dt>
+<dd><dl class="simple">
+<dt>convert input_data (usually in Data-Juicer's Dataset format) into</dt><dd><p>the appropriate format for specific model executor</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="data_juicer_sandbox.model_executors.ModelscopeInferProbeExecutor">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">data_juicer_sandbox.model_executors.</span></span><span class="sig-name descname"><span class="pre">ModelscopeInferProbeExecutor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/data_juicer_sandbox/model_executors.html#ModelscopeInferProbeExecutor"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#data_juicer_sandbox.model_executors.ModelscopeInferProbeExecutor" title="Link to this definition">#</a></dt>
+<dd><p>基类：<a class="reference internal" href="#data_juicer_sandbox.model_executors.ModelScopeExecutor" title="data_juicer_sandbox.model_executors.ModelScopeExecutor"><code class="xref py py-class docutils literal notranslate"><span class="pre">ModelScopeExecutor</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="data_juicer_sandbox.model_executors.ModelscopeInferProbeExecutor.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/data_juicer_sandbox/model_executors.html#ModelscopeInferProbeExecutor.__init__"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#data_juicer_sandbox.model_executors.ModelscopeInferProbeExecutor.__init__" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="data_juicer_sandbox.model_executors.ModelscopeTrainExecutor">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">data_juicer_sandbox.model_executors.</span></span><span class="sig-name descname"><span class="pre">ModelscopeTrainExecutor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">watcher</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/data_juicer_sandbox/model_executors.html#ModelscopeTrainExecutor"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#data_juicer_sandbox.model_executors.ModelscopeTrainExecutor" title="Link to this definition">#</a></dt>
+<dd><p>基类：<a class="reference internal" href="#data_juicer_sandbox.model_executors.ModelScopeExecutor" title="data_juicer_sandbox.model_executors.ModelScopeExecutor"><code class="xref py py-class docutils literal notranslate"><span class="pre">ModelScopeExecutor</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="data_juicer_sandbox.model_executors.ModelscopeTrainExecutor.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">watcher</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/data_juicer_sandbox/model_executors.html#ModelscopeTrainExecutor.__init__"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#data_juicer_sandbox.model_executors.ModelscopeTrainExecutor.__init__" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="data_juicer_sandbox.model_executors.ModelscopeTrainExecutor.cfg_modify_fn">
+<span class="sig-name descname"><span class="pre">cfg_modify_fn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cfg</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/data_juicer_sandbox/model_executors.html#ModelscopeTrainExecutor.cfg_modify_fn"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#data_juicer_sandbox.model_executors.ModelscopeTrainExecutor.cfg_modify_fn" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="data_juicer_sandbox.model_executors.ModelscopeTrainExecutor.build_executor">
+<span class="sig-name descname"><span class="pre">build_executor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">trainer_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">work_dir</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">train_dataset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">eval_dataset</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/data_juicer_sandbox/model_executors.html#ModelscopeTrainExecutor.build_executor"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#data_juicer_sandbox.model_executors.ModelscopeTrainExecutor.build_executor" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="data_juicer_sandbox.model_executors.LLMInferExecutor">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">data_juicer_sandbox.model_executors.</span></span><span class="sig-name descname"><span class="pre">LLMInferExecutor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">watcher</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/data_juicer_sandbox/model_executors.html#LLMInferExecutor"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#data_juicer_sandbox.model_executors.LLMInferExecutor" title="Link to this definition">#</a></dt>
+<dd><p>基类：<a class="reference internal" href="#data_juicer_sandbox.model_executors.BaseModelExecutor" title="data_juicer_sandbox.model_executors.BaseModelExecutor"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModelExecutor</span></code></a></p>
+<p>A inference executor for LLM inference.
+The model preparation method should be implemented by the subclass for specific type of model.</p>
+<p>The config file for this type of executor should at least include the following items:
+1. <cite>type</cite>: model type.
+2. <cite>build_messages_func</cite>: the helper func to build the messages.
+3. <cite>parse_output_func</cite>: the helper func to build the messages.
+4. <cite>dataset_path</cite>: the input datasets or data pools use to construct the input messages for LLM inference.</p>
+<blockquote>
+<div><p>Only support jsonl files for now.</p>
+</div></blockquote>
+<ol class="arabic simple" start="5">
+<li><p><cite>export_path</cite>: the output dir to store the inference results.</p></li>
+<li><p><cite>infer_res_key</cite>: the key name to store the inference results. It's &quot;response&quot; in default.</p></li>
+</ol>
+<dl class="py method">
+<dt class="sig sig-object py" id="data_juicer_sandbox.model_executors.LLMInferExecutor.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">watcher</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/data_juicer_sandbox/model_executors.html#LLMInferExecutor.__init__"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#data_juicer_sandbox.model_executors.LLMInferExecutor.__init__" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="data_juicer_sandbox.model_executors.LLMInferExecutor.prepare_executor">
+<span class="sig-name descname"><span class="pre">prepare_executor</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/data_juicer_sandbox/model_executors.html#LLMInferExecutor.prepare_executor"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#data_juicer_sandbox.model_executors.LLMInferExecutor.prepare_executor" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="data_juicer_sandbox.model_executors.LLMInferExecutor.executor_infer">
+<span class="sig-name descname"><span class="pre">executor_infer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">messages</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/data_juicer_sandbox/model_executors.html#LLMInferExecutor.executor_infer"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#data_juicer_sandbox.model_executors.LLMInferExecutor.executor_infer" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="data_juicer_sandbox.model_executors.HFTransformersInferExecutor">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">data_juicer_sandbox.model_executors.</span></span><span class="sig-name descname"><span class="pre">HFTransformersInferExecutor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">watcher</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/data_juicer_sandbox/model_executors.html#HFTransformersInferExecutor"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#data_juicer_sandbox.model_executors.HFTransformersInferExecutor" title="Link to this definition">#</a></dt>
+<dd><p>基类：<a class="reference internal" href="#data_juicer_sandbox.model_executors.LLMInferExecutor" title="data_juicer_sandbox.model_executors.LLMInferExecutor"><code class="xref py py-class docutils literal notranslate"><span class="pre">LLMInferExecutor</span></code></a></p>
+<p>A inference executor for model inference with Huggingface Transformers.</p>
+<p>The config file for this executor should at least include the following items:
+1. <cite>type</cite>: must be &quot;huggingface&quot;.
+2. <cite>model_path</cite>: the path to the HF model.
+3. <cite>model_params</cite>: extra parameters for the model.
+4. <cite>sampling_params</cite>: extra sampling parameters for the model.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="data_juicer_sandbox.model_executors.HFTransformersInferExecutor.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">watcher</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/data_juicer_sandbox/model_executors.html#HFTransformersInferExecutor.__init__"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#data_juicer_sandbox.model_executors.HFTransformersInferExecutor.__init__" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="data_juicer_sandbox.model_executors.HFTransformersInferExecutor.prepare_executor">
+<span class="sig-name descname"><span class="pre">prepare_executor</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/data_juicer_sandbox/model_executors.html#HFTransformersInferExecutor.prepare_executor"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#data_juicer_sandbox.model_executors.HFTransformersInferExecutor.prepare_executor" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="data_juicer_sandbox.model_executors.HFTransformersInferExecutor.executor_infer">
+<span class="sig-name descname"><span class="pre">executor_infer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">messages</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/data_juicer_sandbox/model_executors.html#HFTransformersInferExecutor.executor_infer"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#data_juicer_sandbox.model_executors.HFTransformersInferExecutor.executor_infer" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="data_juicer_sandbox.model_executors.VLLMInferExecutor">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">data_juicer_sandbox.model_executors.</span></span><span class="sig-name descname"><span class="pre">VLLMInferExecutor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">watcher</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/data_juicer_sandbox/model_executors.html#VLLMInferExecutor"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#data_juicer_sandbox.model_executors.VLLMInferExecutor" title="Link to this definition">#</a></dt>
+<dd><p>基类：<a class="reference internal" href="#data_juicer_sandbox.model_executors.LLMInferExecutor" title="data_juicer_sandbox.model_executors.LLMInferExecutor"><code class="xref py py-class docutils literal notranslate"><span class="pre">LLMInferExecutor</span></code></a></p>
+<p>A inference executor for model inference with vLLM.</p>
+<p>The config file for this executor should at least include the following items:
+1. <cite>type</cite>: must be &quot;vllm&quot;.
+2. <cite>model_path</cite>: the path to the vLLM model.
+3. <cite>model_params</cite>: extra parameters for the model.
+4. <cite>sampling_params</cite>: extra sampling parameters for the model.
+5. other parameters can be referred to the class LLMInferExecutor</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="data_juicer_sandbox.model_executors.VLLMInferExecutor.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">watcher</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/data_juicer_sandbox/model_executors.html#VLLMInferExecutor.__init__"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#data_juicer_sandbox.model_executors.VLLMInferExecutor.__init__" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="data_juicer_sandbox.model_executors.VLLMInferExecutor.prepare_executor">
+<span class="sig-name descname"><span class="pre">prepare_executor</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/data_juicer_sandbox/model_executors.html#VLLMInferExecutor.prepare_executor"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#data_juicer_sandbox.model_executors.VLLMInferExecutor.prepare_executor" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="data_juicer_sandbox.model_executors.VLLMInferExecutor.executor_infer">
+<span class="sig-name descname"><span class="pre">executor_infer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">messages</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/data_juicer_sandbox/model_executors.html#VLLMInferExecutor.executor_infer"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#data_juicer_sandbox.model_executors.VLLMInferExecutor.executor_infer" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="data_juicer_sandbox.model_executors.APIModelInferExecutor">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">data_juicer_sandbox.model_executors.</span></span><span class="sig-name descname"><span class="pre">APIModelInferExecutor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">watcher</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/data_juicer_sandbox/model_executors.html#APIModelInferExecutor"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#data_juicer_sandbox.model_executors.APIModelInferExecutor" title="Link to this definition">#</a></dt>
+<dd><p>基类：<a class="reference internal" href="#data_juicer_sandbox.model_executors.LLMInferExecutor" title="data_juicer_sandbox.model_executors.LLMInferExecutor"><code class="xref py py-class docutils literal notranslate"><span class="pre">LLMInferExecutor</span></code></a></p>
+<p>A inference executor for model inference with OpenAI API.</p>
+<p>The config file for this executor should at least include the following items:
+1. <cite>type</cite>: must be &quot;api&quot;.
+2. <cite>model</cite>: the API model used to inference.
+3. <cite>model_params</cite>: extra parameters for the model.
+4. <cite>sampling_params</cite>: extra sampling parameters for the model.
+5. <cite>api_endpoint</cite>: URL endpoint for the API.
+6. <cite>response_path</cite>: Path to extract content from the API response. Defaults to 'choices.0.message.content'.
+7. <cite>max_retry_num</cite>: the max number of retries when the API request fails.
+8. other parameters can be referred to the class LLMInferExecutor</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="data_juicer_sandbox.model_executors.APIModelInferExecutor.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">watcher</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/data_juicer_sandbox/model_executors.html#APIModelInferExecutor.__init__"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#data_juicer_sandbox.model_executors.APIModelInferExecutor.__init__" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="data_juicer_sandbox.model_executors.APIModelInferExecutor.prepare_executor">
+<span class="sig-name descname"><span class="pre">prepare_executor</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/data_juicer_sandbox/model_executors.html#APIModelInferExecutor.prepare_executor"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#data_juicer_sandbox.model_executors.APIModelInferExecutor.prepare_executor" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="data_juicer_sandbox.model_executors.APIModelInferExecutor.executor_infer">
+<span class="sig-name descname"><span class="pre">executor_infer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">messages</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/data_juicer_sandbox/model_executors.html#APIModelInferExecutor.executor_infer"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#data_juicer_sandbox.model_executors.APIModelInferExecutor.executor_infer" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="data_juicer_sandbox.model_executors.LLaVAExecutor">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">data_juicer_sandbox.model_executors.</span></span><span class="sig-name descname"><span class="pre">LLaVAExecutor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/data_juicer_sandbox/model_executors.html#LLaVAExecutor"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#data_juicer_sandbox.model_executors.LLaVAExecutor" title="Link to this definition">#</a></dt>
+<dd><p>基类：<a class="reference internal" href="#data_juicer_sandbox.model_executors.BaseModelExecutor" title="data_juicer_sandbox.model_executors.BaseModelExecutor"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModelExecutor</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="data_juicer_sandbox.model_executors.LLaVAExecutor.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/data_juicer_sandbox/model_executors.html#LLaVAExecutor.__init__"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#data_juicer_sandbox.model_executors.LLaVAExecutor.__init__" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="data_juicer_sandbox.model_executors.LLaMAFactoryExecutor">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">data_juicer_sandbox.model_executors.</span></span><span class="sig-name descname"><span class="pre">LLaMAFactoryExecutor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/data_juicer_sandbox/model_executors.html#LLaMAFactoryExecutor"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#data_juicer_sandbox.model_executors.LLaMAFactoryExecutor" title="Link to this definition">#</a></dt>
+<dd><p>基类：<a class="reference internal" href="#data_juicer_sandbox.model_executors.BaseModelExecutor" title="data_juicer_sandbox.model_executors.BaseModelExecutor"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModelExecutor</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="data_juicer_sandbox.model_executors.LLaMAFactoryExecutor.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/data_juicer_sandbox/model_executors.html#LLaMAFactoryExecutor.__init__"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#data_juicer_sandbox.model_executors.LLaMAFactoryExecutor.__init__" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="data_juicer_sandbox.model_executors.MegatronExecutor">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">data_juicer_sandbox.model_executors.</span></span><span class="sig-name descname"><span class="pre">MegatronExecutor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/data_juicer_sandbox/model_executors.html#MegatronExecutor"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#data_juicer_sandbox.model_executors.MegatronExecutor" title="Link to this definition">#</a></dt>
+<dd><p>基类：<a class="reference internal" href="#data_juicer_sandbox.model_executors.BaseModelExecutor" title="data_juicer_sandbox.model_executors.BaseModelExecutor"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseModelExecutor</span></code></a></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="data_juicer_sandbox.model_executors.MegatronExecutor.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">model_config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/data_juicer_sandbox/model_executors.html#MegatronExecutor.__init__"><span class="viewcode-link"><span class="pre">[源代码]</span></span></a><a class="headerlink" href="#data_juicer_sandbox.model_executors.MegatronExecutor.__init__" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="data_juicer_sandbox.hooks.html"
+       title="上一页">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">上一页</p>
+        <p class="prev-next-title">data_juicer_sandbox.hooks module</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="data_juicer_sandbox.pipelines.html"
+       title="下一页">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">下一页</p>
+        <p class="prev-next-title">data_juicer_sandbox.pipelines module</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> 当前页面
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data_juicer_sandbox.model_executors.BaseModelExecutor"><code class="docutils literal notranslate"><span class="pre">BaseModelExecutor</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data_juicer_sandbox.model_executors.BaseModelExecutor.__init__"><code class="docutils literal notranslate"><span class="pre">BaseModelExecutor.__init__()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data_juicer_sandbox.model_executors.BaseModelExecutor.run"><code class="docutils literal notranslate"><span class="pre">BaseModelExecutor.run()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data_juicer_sandbox.model_executors.BaseModelExecutor.run_subprocess"><code class="docutils literal notranslate"><span class="pre">BaseModelExecutor.run_subprocess()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data_juicer_sandbox.model_executors.BaseModelExecutor.watch_run"><code class="docutils literal notranslate"><span class="pre">BaseModelExecutor.watch_run()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data_juicer_sandbox.model_executors.BaseModelExecutor.data_connector"><code class="docutils literal notranslate"><span class="pre">BaseModelExecutor.data_connector()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data_juicer_sandbox.model_executors.ModelScopeExecutor"><code class="docutils literal notranslate"><span class="pre">ModelScopeExecutor</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data_juicer_sandbox.model_executors.ModelScopeExecutor.data_connector"><code class="docutils literal notranslate"><span class="pre">ModelScopeExecutor.data_connector()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data_juicer_sandbox.model_executors.ModelscopeInferProbeExecutor"><code class="docutils literal notranslate"><span class="pre">ModelscopeInferProbeExecutor</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data_juicer_sandbox.model_executors.ModelscopeInferProbeExecutor.__init__"><code class="docutils literal notranslate"><span class="pre">ModelscopeInferProbeExecutor.__init__()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data_juicer_sandbox.model_executors.ModelscopeTrainExecutor"><code class="docutils literal notranslate"><span class="pre">ModelscopeTrainExecutor</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data_juicer_sandbox.model_executors.ModelscopeTrainExecutor.__init__"><code class="docutils literal notranslate"><span class="pre">ModelscopeTrainExecutor.__init__()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data_juicer_sandbox.model_executors.ModelscopeTrainExecutor.cfg_modify_fn"><code class="docutils literal notranslate"><span class="pre">ModelscopeTrainExecutor.cfg_modify_fn()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data_juicer_sandbox.model_executors.ModelscopeTrainExecutor.build_executor"><code class="docutils literal notranslate"><span class="pre">ModelscopeTrainExecutor.build_executor()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data_juicer_sandbox.model_executors.LLMInferExecutor"><code class="docutils literal notranslate"><span class="pre">LLMInferExecutor</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data_juicer_sandbox.model_executors.LLMInferExecutor.__init__"><code class="docutils literal notranslate"><span class="pre">LLMInferExecutor.__init__()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data_juicer_sandbox.model_executors.LLMInferExecutor.prepare_executor"><code class="docutils literal notranslate"><span class="pre">LLMInferExecutor.prepare_executor()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data_juicer_sandbox.model_executors.LLMInferExecutor.executor_infer"><code class="docutils literal notranslate"><span class="pre">LLMInferExecutor.executor_infer()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data_juicer_sandbox.model_executors.HFTransformersInferExecutor"><code class="docutils literal notranslate"><span class="pre">HFTransformersInferExecutor</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data_juicer_sandbox.model_executors.HFTransformersInferExecutor.__init__"><code class="docutils literal notranslate"><span class="pre">HFTransformersInferExecutor.__init__()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data_juicer_sandbox.model_executors.HFTransformersInferExecutor.prepare_executor"><code class="docutils literal notranslate"><span class="pre">HFTransformersInferExecutor.prepare_executor()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data_juicer_sandbox.model_executors.HFTransformersInferExecutor.executor_infer"><code class="docutils literal notranslate"><span class="pre">HFTransformersInferExecutor.executor_infer()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data_juicer_sandbox.model_executors.VLLMInferExecutor"><code class="docutils literal notranslate"><span class="pre">VLLMInferExecutor</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data_juicer_sandbox.model_executors.VLLMInferExecutor.__init__"><code class="docutils literal notranslate"><span class="pre">VLLMInferExecutor.__init__()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data_juicer_sandbox.model_executors.VLLMInferExecutor.prepare_executor"><code class="docutils literal notranslate"><span class="pre">VLLMInferExecutor.prepare_executor()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data_juicer_sandbox.model_executors.VLLMInferExecutor.executor_infer"><code class="docutils literal notranslate"><span class="pre">VLLMInferExecutor.executor_infer()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data_juicer_sandbox.model_executors.APIModelInferExecutor"><code class="docutils literal notranslate"><span class="pre">APIModelInferExecutor</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data_juicer_sandbox.model_executors.APIModelInferExecutor.__init__"><code class="docutils literal notranslate"><span class="pre">APIModelInferExecutor.__init__()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data_juicer_sandbox.model_executors.APIModelInferExecutor.prepare_executor"><code class="docutils literal notranslate"><span class="pre">APIModelInferExecutor.prepare_executor()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data_juicer_sandbox.model_executors.APIModelInferExecutor.executor_infer"><code class="docutils literal notranslate"><span class="pre">APIModelInferExecutor.executor_infer()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data_juicer_sandbox.model_executors.LLaVAExecutor"><code class="docutils literal notranslate"><span class="pre">LLaVAExecutor</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data_juicer_sandbox.model_executors.LLaVAExecutor.__init__"><code class="docutils literal notranslate"><span class="pre">LLaVAExecutor.__init__()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data_juicer_sandbox.model_executors.LLaMAFactoryExecutor"><code class="docutils literal notranslate"><span class="pre">LLaMAFactoryExecutor</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data_juicer_sandbox.model_executors.LLaMAFactoryExecutor.__init__"><code class="docutils literal notranslate"><span class="pre">LLaMAFactoryExecutor.__init__()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data_juicer_sandbox.model_executors.MegatronExecutor"><code class="docutils literal notranslate"><span class="pre">MegatronExecutor</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data_juicer_sandbox.model_executors.MegatronExecutor.__init__"><code class="docutils literal notranslate"><span class="pre">MegatronExecutor.__init__()</span></code></a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+  <div role="note" aria-label="source link">
+    <h3>本页</h3>
+    <ul class="this-page-menu">
+      <li><a href="../_sources/api/data_juicer_sandbox.model_executors.rst.txt"
+            rel="nofollow">显示源代码</a></li>
+    </ul>
+   </div></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2024, Data-Juicer Team.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    由 <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3创建。
+    <br/>
+  </p>
+</div>
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  使用 <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1构建.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

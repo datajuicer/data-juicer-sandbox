@@ -1,0 +1,7 @@
+data\_juicer\_sandbox.factories module
+======================================
+
+.. automodule:: data_juicer_sandbox.factories
+   :members:
+   :show-inheritance:
+   :undoc-members:

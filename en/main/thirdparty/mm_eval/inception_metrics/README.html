@@ -1,0 +1,733 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Metrics for video generation &#8212; Data Juicer Sandbox</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=b26f9bd0" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../../_static/documentation_options.js?v=8a448e45"></script>
+    <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'thirdparty/mm_eval/inception_metrics/README';</script>
+    <script src="../../../_static/sidebar.js?v=9ff78125"></script>
+    <link rel="icon" href="../../../_static/icon.png"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="VBench metrics" href="../vbench_metrics/README.html" />
+    <link rel="prev" title="Q&amp;A" href="../../../docs/QA.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search docs..."
+         aria-label="Search docs..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../../_static/icon.png" class="logo__image only-light" alt=""/>
+    <img src="../../../_static/icon.png" class="logo__image only-dark pst-js-only" alt=""/>
+  
+  
+    <p class="title logo__title">Data Juicer Sandbox</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../../../docs_index.html">
+    DOCS
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../api.html">
+    API
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://datajuicer.github.io/data-juicer/en/main/">
+    Core
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://datajuicer.github.io/data-juicer-hub/en/main/">
+    Hub
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://datajuicer.github.io/data-juicer-agents/en/main/">
+    Agents
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/datajuicer/data-juicer-sandbox" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><div class="navbar-switcher-container">
+  
+  <div class="navbar-dropdown">
+    <div class="navbar-dropdown-trigger">
+      <span class="dropdown-label">
+        🌐 en
+      </span>
+      <i class="fa-solid fa-chevron-down dropdown-icon"></i>
+    </div>
+    <div class="navbar-dropdown-panel">
+      <div class="dropdown-content">
+        
+        <a href="../../../../../en/main/thirdparty/mm_eval/inception_metrics/README.html"
+           class="dropdown-item active">
+          English
+        </a>
+        
+        <a href="../../../../../zh_CN/main/thirdparty/mm_eval/inception_metrics/README_ZH.html"
+           class="dropdown-item ">
+          简体中文
+        </a>
+        
+      </div>
+    </div>
+  </div>
+  
+
+  
+  <div class="navbar-dropdown">
+    <div class="navbar-dropdown-trigger">
+      <span class="dropdown-label">
+        📦 main
+      </span>
+      <i class="fa-solid fa-chevron-down dropdown-icon"></i>
+    </div>
+    <div class="navbar-dropdown-panel">
+      <div class="dropdown-content version-list">
+        
+        <a href="../../../../main/thirdparty/mm_eval/inception_metrics/README.html"
+           class="dropdown-item active">
+          main
+        </a>
+        
+      </div>
+    </div>
+  </div>
+  
+</div></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../../../docs_index.html">
+    DOCS
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../api.html">
+    API
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://datajuicer.github.io/data-juicer/en/main/">
+    Core
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://datajuicer.github.io/data-juicer-hub/en/main/">
+    Hub
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://datajuicer.github.io/data-juicer-agents/en/main/">
+    Agents
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/datajuicer/data-juicer-sandbox" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><div class="navbar-switcher-container">
+  
+  <div class="navbar-dropdown">
+    <div class="navbar-dropdown-trigger">
+      <span class="dropdown-label">
+        🌐 en
+      </span>
+      <i class="fa-solid fa-chevron-down dropdown-icon"></i>
+    </div>
+    <div class="navbar-dropdown-panel">
+      <div class="dropdown-content">
+        
+        <a href="../../../../../en/main/thirdparty/mm_eval/inception_metrics/README.html"
+           class="dropdown-item active">
+          English
+        </a>
+        
+        <a href="../../../../../zh_CN/main/thirdparty/mm_eval/inception_metrics/README_ZH.html"
+           class="dropdown-item ">
+          简体中文
+        </a>
+        
+      </div>
+    </div>
+  </div>
+  
+
+  
+  <div class="navbar-dropdown">
+    <div class="navbar-dropdown-trigger">
+      <span class="dropdown-label">
+        📦 main
+      </span>
+      <i class="fa-solid fa-chevron-down dropdown-icon"></i>
+    </div>
+    <div class="navbar-dropdown-panel">
+      <div class="dropdown-content version-list">
+        
+        <a href="../../../../main/thirdparty/mm_eval/inception_metrics/README.html"
+           class="dropdown-item active">
+          main
+        </a>
+        
+      </div>
+    </div>
+  </div>
+  
+</div></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../../docs/UserGuide.html">User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../docs/DeveloperGuide.html">Developer Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../docs/QA.html">Q&amp;A</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Third-party</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Metrics for video generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vbench_metrics/README.html">VBench metrics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../models/README.html">Third-party Model Library</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../../docs_index.html" class="nav-link">DOCS</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Metrics for video generation</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="metrics-for-video-generation">
+<h1>Metrics for video generation<a class="headerlink" href="#metrics-for-video-generation" title="Link to this heading">#</a></h1>
+<p>This folder contains some postprocess scripts for evaluation of generated videos.</p>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Link to this heading">#</a></h2>
+<p>Use <a class="reference external" href="https://github.com/datajuicer/data-juicer-sandbox/blob/main/thirdparty/mm_eval/inception_metrics/calc_metrics_for_videos.py">calc_metrics_for_videos.py</a> to compute FVD/ISV for generated videos.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>tools/video_metrics/calc_metrics_for_videos.py<span class="w">        </span><span class="se">\</span>
+<span class="w">    </span>--fake_data_path<span class="w">    </span>&lt;fake_data_path&gt;<span class="w">        </span><span class="se">\</span>
+<span class="w">    </span>--real_data_path<span class="w">    </span>&lt;real_data_path&gt;<span class="w">        </span><span class="se">\</span>
+<span class="w">    </span><span class="o">[</span>--fake_mm_dir<span class="w">      </span>&lt;fake_mm_dir&gt;<span class="o">]</span><span class="w">          </span><span class="se">\</span>
+<span class="w">    </span><span class="o">[</span>--real_mm_dir<span class="w">      </span>&lt;real_mm_dir&gt;<span class="o">]</span><span class="w">          </span><span class="se">\</span>
+<span class="w">    </span>--metric<span class="w">            </span>&lt;metric&gt;<span class="w">                </span><span class="se">\</span>
+<span class="w">    </span><span class="o">[</span>--detector_path<span class="w">    </span>&lt;detector_path&gt;<span class="o">]</span><span class="w">        </span><span class="se">\</span>
+<span class="w">    </span>--result_path<span class="w">       </span>&lt;result_path&gt;<span class="w">           </span><span class="se">\</span>
+<span class="w">    </span>--num_runs<span class="w">          </span>&lt;num_runs&gt;<span class="w">              </span><span class="se">\</span>
+<span class="w">    </span>--height<span class="w">            </span>&lt;height&gt;<span class="w">                </span><span class="se">\</span>
+<span class="w">    </span>--width<span class="w">             </span>&lt;width&gt;<span class="w">                 </span><span class="se">\</span>
+<span class="w">    </span>--replace_cache<span class="w">     </span>&lt;replace_cache&gt;<span class="w">         </span><span class="se">\</span>
+<span class="w">    </span>--verbose<span class="w">           </span>&lt;verbose&gt;<span class="w">               </span><span class="se">\</span>
+<span class="w">    </span>--seed<span class="w">              </span>&lt;seed&gt;
+
+<span class="c1"># get help</span>
+python<span class="w"> </span>tools/video_metrics/calc_metrics_for_videos.py<span class="w"> </span>--help
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">fake_data_path</span></code>: The path to generated dataset. Only support for <code class="docutils literal notranslate"><span class="pre">jsonl</span></code> format. The video paths are put in the list under <code class="docutils literal notranslate"><span class="pre">videos</span></code> keys.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">real_data_path</span></code>: The path to ground truth dataset. Only support for <code class="docutils literal notranslate"><span class="pre">jsonl</span></code> format. The video paths are put in the list under <code class="docutils literal notranslate"><span class="pre">videos</span></code> keys. Required when computing FVD, FID, KID, and PR.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fake_mm_dir</span></code>: The root directory to store the fake videos. If it is not none, the paths in jsonl file at fake_data_path are relative paths on it, else are absolute path.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">real_mm_dir</span></code>: The root directory to store the real videos. If it is not none, the paths in jsonl file at real_data_path are relative paths on it, else are absolute path.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">metric</span></code>: The name of metric applied, currently support <code class="docutils literal notranslate"><span class="pre">fvd2048_16f</span></code>, <code class="docutils literal notranslate"><span class="pre">fvd2048_128f</span></code>, <code class="docutils literal notranslate"><span class="pre">fvd2048_128f_subsample8f</span></code>, <code class="docutils literal notranslate"><span class="pre">kvd2048_16f</span></code>, <code class="docutils literal notranslate"><span class="pre">isv2048_ucf</span></code>, <code class="docutils literal notranslate"><span class="pre">prv2048_3n_16f</span></code>, <code class="docutils literal notranslate"><span class="pre">fid50k</span></code>, <code class="docutils literal notranslate"><span class="pre">kid50k</span></code>, <code class="docutils literal notranslate"><span class="pre">is50k</span></code>, <code class="docutils literal notranslate"><span class="pre">pr50k_3n</span></code>.</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">fvd2048_16f</span></code>: Compute Frechet Video Distance (FVD), sample 2048 times in dataset, 16 adjacent frames each time.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fvd2048_128f</span></code>: Compute Frechet Video Distance (FVD), sample 2048 times in dataset, 128 adjacent frames each time.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fvd2048_128f_subsample8f</span></code>: Compute Frechet Video Distance (FVD), sample 2048 times in dataset, 16 frames each time, sample 1 frame every adjacent 8 frames.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">kvd2048_16f</span></code>: Compute Kernel Video Distance (KVD), sample 2048 times in dataset, 16 adjacent frames each time, split features to 100 subset to compute KVDs and return the mean.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">isv2048_ucf</span></code>: Compute Inception Score of Videos (ISV), sample 2048 times in dataset, 16 frames each time, split features to 10 subset to compute ISs and return the mean and std.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">prv2048_3n_16f</span></code>: Compute Precision/Recall of Videos (PRV), sample 2048 times in dataset, 16 adjacent frames each time, with the 4th nearest features to estimate the distributions.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fid50k</span></code>: Compute Frechet Inception Distance (FID) of frames, sample 50000 frames from fake dataset at most.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">kid50k</span></code>: Compute Kernel Inception Distance (KID) of frames, sample 50000 frames from fake dataset at most, split features to 100 subset to compute KIDs and return the mean.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">is50k</span></code>: Compute Inception Score(IS) of frames, sample 50000 frames from fake dataset at most, split features to 10 subset to compute ISs and return the mean and std.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pr50k_3n</span></code>: Compute Precision/Recall (PR) of frames, sample 50000 frames from fake dataset at most, with the 4th nearest features to estimate the distributions</p></li>
+</ul>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">detector_path</span></code>: Path to the corresponding detection model. Download the model from web if it is None.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">result_path</span></code>: Path to JSON filename for saving results.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">num_runs</span></code>: How many runs of the metric to average over.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">height</span></code>: Sampled frames will be resized to this height.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">width</span></code>: Sampled frames will be resized to this width.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">replace_cache</span></code>: Whether to replace the dataset stats cache.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">verbose</span></code>: Whether to log progress.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">seed</span></code>: the random seed</p></li>
+</ul>
+</section>
+<section id="introduction-of-metrics">
+<h2>Introduction of Metrics<a class="headerlink" href="#introduction-of-metrics" title="Link to this heading">#</a></h2>
+<section id="fvd">
+<h3>FVD<a class="headerlink" href="#fvd" title="Link to this heading">#</a></h3>
+<p>The Frechet Video Distance (FVD)<sup><a class="reference internal" href="#reference"><span class="xref myst">1</span></a></sup> measures the distance of distribution of video features from real dataset and fake dataset, extracted by a video classifier. The video classifier is an I3D model, trained on Kinetics-400, containing 400 human action classes.</p>
+</section>
+<section id="kvd">
+<h3>KVD<a class="headerlink" href="#kvd" title="Link to this heading">#</a></h3>
+<p>The Kernel Video Distance (KVD) is the video version of Frechet Inception Distance (FID)<sup><a class="reference internal" href="#reference"><span class="xref myst">3</span></a></sup>, which extract features from videos by an I3D model, trained on Kinetics-400, containing 400 human action classes.</p>
+</section>
+<section id="isv">
+<h3>ISV<a class="headerlink" href="#isv" title="Link to this heading">#</a></h3>
+<p>The Inception Score of Videos (ISV)<sup><a class="reference internal" href="#reference"><span class="xref myst">2</span></a></sup> evaluates the generated videos based on their quality and diversity, with a preference for diversity. Utilizing a C3D video classification model trained on the UCF101 action recognition dataset, ISV assesses quality through the classification certainty of each video—specifically, by computing the sum of the negative entropy of individual predictions. Meanwhile, diversity is gauged by the entropy of the prediction averages.</p>
+</section>
+<section id="prv">
+<h3>PRV<a class="headerlink" href="#prv" title="Link to this heading">#</a></h3>
+<p>The Precision/Recall of Videos (PRV) is the video version of Precision/Recall (PR)<sup><a class="reference internal" href="#reference"><span class="xref myst">5</span></a></sup>, which extract features from videos by an I3D model, trained on Kinetics-400, containing 400 human action classes.</p>
+</section>
+<section id="fid">
+<h3>FID<a class="headerlink" href="#fid" title="Link to this heading">#</a></h3>
+<p>The Frechet Inception Distance (FID)<sup><a class="reference internal" href="#reference"><span class="xref myst">3</span></a></sup> shares similarities with FVD in its approach, evaluating videos by analyzing the features of individual frames derived from an image classification model trained on ImageNet.</p>
+</section>
+<section id="kid">
+<h3>KID<a class="headerlink" href="#kid" title="Link to this heading">#</a></h3>
+<p>The Kernel Inception Distance (KID)<sup><a class="reference internal" href="#reference"><span class="xref myst">4</span></a></sup> is similar to FID and quantifies the dissimilarity between two sets of videos by computing the squared maximum mean discrepancy of the features of frames through multiple samplings. Unlike FID, KID utilizes an unbiased estimator with a third-degree kernel, aligning more consistently with human perception. The applied image classification model is same as the model FID applied.</p>
+</section>
+<section id="is">
+<h3>IS<a class="headerlink" href="#is" title="Link to this heading">#</a></h3>
+<p>The Inception Score (IS)<sup><a class="reference internal" href="#reference"><span class="xref myst">2</span></a></sup> shares similarities with ISV in its approach, evaluating videos by analyzing the predictions of individual frames derived from an image classification model trained on ImageNet.</p>
+</section>
+<section id="pr">
+<h3>PR<a class="headerlink" href="#pr" title="Link to this heading">#</a></h3>
+<p>The Precision/Recall (PR)<sup><a class="reference internal" href="#reference"><span class="xref myst">5</span></a></sup> estimates the distribution of features of frames in the feature space by demarcating a region within the distance to the k-nearest neighbor features. It then assesses the precision and recall of frame generation by determining whether samples fall within the distributions of the real and fake datasets. The features are extracted from the VGG image classification model<sup><a class="reference internal" href="#reference"><span class="xref myst">6</span></a></sup> trained on ILSVRC-2012.</p>
+<h2 id="reference">Reference:</h2>
+<ul class="simple">
+<li><p>[1] Unterthiner, Thomas, et al. “Towards accurate generative models of video: A new metric &amp; challenges.” arXiv preprint arXiv:1812.01717 (2018).</p></li>
+<li><p>[2] Salimans, Tim, et al. “Improved techniques for training gans.” Advances in neural information processing systems 29 (2016).</p></li>
+<li><p>[3] Heusel, Martin, et al. “Gans trained by a two time-scale update rule converge to a local nash equilibrium.” Advances in neural information processing systems 30 (2017).</p></li>
+<li><p>[4] Bińkowski, Mikołaj, et al. “Demystifying mmd gans.” arXiv preprint arXiv:1801.01401 (2018).</p></li>
+<li><p>[5] Kynkäänniemi, Tuomas, et al. “Improved precision and recall metric for assessing generative models.” Advances in neural information processing systems 32 (2019).</p></li>
+<li><p>[6] Simonyan, Karen, and Andrew Zisserman. “Very deep convolutional networks for large-scale image recognition.” arXiv preprint arXiv:1409.1556 (2014).</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../../../docs/QA.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Q&amp;A</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../vbench_metrics/README.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">VBench metrics</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#usage">Usage</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-of-metrics">Introduction of Metrics</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fvd">FVD</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kvd">KVD</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#isv">ISV</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prv">PRV</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fid">FID</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kid">KID</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#is">IS</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pr">PR</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../../_sources/thirdparty/mm_eval/inception_metrics/README.md.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2024, Data-Juicer Team.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3.
+    <br/>
+  </p>
+</div>
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

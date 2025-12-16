@@ -1,0 +1,7 @@
+data\_juicer\_sandbox.hooks module
+==================================
+
+.. automodule:: data_juicer_sandbox.hooks
+   :members:
+   :show-inheritance:
+   :undoc-members:

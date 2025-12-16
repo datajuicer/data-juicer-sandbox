@@ -1,0 +1,1180 @@
+
+<!DOCTYPE html>
+
+
+<html lang="zh-CN" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>data_juicer_sandbox.hooks &#8212; Data Juicer Sandbox</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=b26f9bd0" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../../_static/documentation_options.js?v=91bfbbb6"></script>
+    <script src="../../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/translations.js?v=beaddf03"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '_modules/data_juicer_sandbox/hooks';</script>
+    <script src="../../_static/sidebar.js?v=9ff78125"></script>
+    <link rel="icon" href="../../_static/icon.png"/>
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="搜索" href="../../search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="zh-CN"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">跳转至主要内容</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>回到顶部</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search docs..."
+         aria-label="Search docs..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="版本警告"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="网页导航">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index_ZH.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/icon.png" class="logo__image only-light" alt=""/>
+    <img src="../../_static/icon.png" class="logo__image only-dark pst-js-only" alt=""/>
+  
+  
+    <p class="title logo__title">Data Juicer Sandbox</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../docs_index_ZH.html">
+    文档
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../api.html">
+    API
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://datajuicer.github.io/data-juicer/zh_CN/main/">
+    Core
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://datajuicer.github.io/data-juicer-hub/zh_CN/main/">
+    Hub
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://datajuicer.github.io/data-juicer-agents/zh_CN/main/">
+    Agents
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="搜索" aria-label="搜索" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/datajuicer/data-juicer-sandbox" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+      
+        <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="亮色"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="暗色"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+      
+        <div class="navbar-item"><div class="navbar-switcher-container">
+  
+  <div class="navbar-dropdown">
+    <div class="navbar-dropdown-trigger">
+      <span class="dropdown-label">
+        🌐 zh-CN
+      </span>
+      <i class="fa-solid fa-chevron-down dropdown-icon"></i>
+    </div>
+    <div class="navbar-dropdown-panel">
+      <div class="dropdown-content">
+        
+        <a href="../../../../en/main/_modules/data_juicer_sandbox/hooks.html"
+           class="dropdown-item ">
+          English
+        </a>
+        
+        <a href="../../../../zh_CN/main/_modules/data_juicer_sandbox/hooks_ZH.html"
+           class="dropdown-item ">
+          简体中文
+        </a>
+        
+      </div>
+    </div>
+  </div>
+  
+
+  
+  <div class="navbar-dropdown">
+    <div class="navbar-dropdown-trigger">
+      <span class="dropdown-label">
+        📦 main
+      </span>
+      <i class="fa-solid fa-chevron-down dropdown-icon"></i>
+    </div>
+    <div class="navbar-dropdown-panel">
+      <div class="dropdown-content version-list">
+        
+        <a href="../../../main/_modules/data_juicer_sandbox/hooks.html"
+           class="dropdown-item active">
+          main
+        </a>
+        
+      </div>
+    </div>
+  </div>
+  
+</div></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="搜索" aria-label="搜索" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+    </div>
+  
+
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../docs_index_ZH.html">
+    文档
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../api.html">
+    API
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://datajuicer.github.io/data-juicer/zh_CN/main/">
+    Core
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://datajuicer.github.io/data-juicer-hub/zh_CN/main/">
+    Hub
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-external" href="https://datajuicer.github.io/data-juicer-agents/zh_CN/main/">
+    Agents
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/datajuicer/data-juicer-sandbox" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-github fa-lg" aria-hidden="true"></i>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+</ul></div>
+        
+          <div class="navbar-item">
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="亮色"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="暗色"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button></div>
+        
+          <div class="navbar-item"><div class="navbar-switcher-container">
+  
+  <div class="navbar-dropdown">
+    <div class="navbar-dropdown-trigger">
+      <span class="dropdown-label">
+        🌐 zh-CN
+      </span>
+      <i class="fa-solid fa-chevron-down dropdown-icon"></i>
+    </div>
+    <div class="navbar-dropdown-panel">
+      <div class="dropdown-content">
+        
+        <a href="../../../../en/main/_modules/data_juicer_sandbox/hooks.html"
+           class="dropdown-item ">
+          English
+        </a>
+        
+        <a href="../../../../zh_CN/main/_modules/data_juicer_sandbox/hooks_ZH.html"
+           class="dropdown-item ">
+          简体中文
+        </a>
+        
+      </div>
+    </div>
+  </div>
+  
+
+  
+  <div class="navbar-dropdown">
+    <div class="navbar-dropdown-trigger">
+      <span class="dropdown-label">
+        📦 main
+      </span>
+      <i class="fa-solid fa-chevron-down dropdown-icon"></i>
+    </div>
+    <div class="navbar-dropdown-panel">
+      <div class="dropdown-content version-list">
+        
+        <a href="../../../main/_modules/data_juicer_sandbox/hooks.html"
+           class="dropdown-item active">
+          main
+        </a>
+        
+      </div>
+    </div>
+  </div>
+  
+</div></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../index_ZH.html" class="nav-link" aria-label="初始页面">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../index.html" class="nav-link">模块代码</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">data_juicer_sandbox.hooks</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <h1>data_juicer_sandbox.hooks 源代码</h1><div class="highlight"><pre>
+<span></span><span class="c1"># yapf: disable</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">copy</span><span class="w"> </span><span class="kn">import</span> <span class="n">deepcopy</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">data_juicer.config</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_init_configs</span><span class="p">,</span> <span class="n">prepare_side_configs</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">data_juicer.core.data.dj_dataset</span><span class="w"> </span><span class="kn">import</span> <span class="n">nested_query</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">data_juicer.utils.constant</span><span class="w"> </span><span class="kn">import</span> <span class="n">JobRequiredKeys</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">jsonargparse</span><span class="w"> </span><span class="kn">import</span> <span class="n">dict_to_namespace</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">loguru</span><span class="w"> </span><span class="kn">import</span> <span class="n">logger</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">data_juicer_sandbox.context_infos</span><span class="w"> </span><span class="kn">import</span> <span class="n">ContextInfos</span><span class="p">,</span> <span class="n">JobInfos</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">data_juicer_sandbox.factories</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">data_analyzer_factory</span><span class="p">,</span>
+    <span class="n">data_evaluator_factory</span><span class="p">,</span>
+    <span class="n">data_executor_factory</span><span class="p">,</span>
+    <span class="n">data_pool_manipulator_factory</span><span class="p">,</span>
+    <span class="n">general_data_executor_factory</span><span class="p">,</span>
+    <span class="n">general_probe_factory</span><span class="p">,</span>
+    <span class="n">model_evaluator_factory</span><span class="p">,</span>
+    <span class="n">model_infer_evaluator_factory</span><span class="p">,</span>
+    <span class="n">model_infer_executor_factory</span><span class="p">,</span>
+    <span class="n">model_train_executor_factory</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">data_juicer_sandbox.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">add_iter_subdir_to_paths</span>
+
+
+<div class="viewcode-block" id="BaseHook">
+<a class="viewcode-back" href="../../api/data_juicer_sandbox.hooks.html#data_juicer_sandbox.hooks.BaseHook">[文档]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">BaseHook</span><span class="p">:</span>
+
+<div class="viewcode-block" id="BaseHook.__init__">
+<a class="viewcode-back" href="../../api/data_juicer_sandbox.hooks.html#data_juicer_sandbox.hooks.BaseHook.__init__">[文档]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">job_cfg</span><span class="p">,</span> <span class="n">watcher</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">job_cfg</span> <span class="o">=</span> <span class="n">job_cfg</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">watcher</span> <span class="o">=</span> <span class="n">watcher</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">hook_type</span> <span class="o">=</span> <span class="n">job_cfg</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">JobRequiredKeys</span><span class="o">.</span><span class="n">hook</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+
+        <span class="c1"># hook inputs mapping for config update</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">input_mapping</span> <span class="o">=</span> <span class="n">job_cfg</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">JobRequiredKeys</span><span class="o">.</span><span class="n">input</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="p">{})</span>
+        <span class="c1"># names of hook output for record the results of hook running</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">output_keys</span> <span class="o">=</span> <span class="n">job_cfg</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">JobRequiredKeys</span><span class="o">.</span><span class="n">output</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_keys</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">output_keys</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">output_keys</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">output_keys</span><span class="p">]</span>
+        <span class="c1"># hook local settings for configs</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">local_settings</span> <span class="o">=</span> <span class="n">job_cfg</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">JobRequiredKeys</span><span class="o">.</span><span class="n">local</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="p">{})</span>
+
+        <span class="c1"># unique meta name for this job</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">meta_name</span> <span class="o">=</span> <span class="n">job_cfg</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">JobRequiredKeys</span><span class="o">.</span><span class="n">meta_name</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="s1">&#39;anonymous_meta_name&#39;</span><span class="p">)</span>
+        <span class="c1"># data-juicer config for some jobs based on Data-Juicer</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">dj_cfg</span> <span class="o">=</span> <span class="n">job_cfg</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">JobRequiredKeys</span><span class="o">.</span><span class="n">dj_configs</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">inited_dj_cfg</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="c1"># extra config for some other specific jobs</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">extra_cfg</span> <span class="o">=</span> <span class="n">job_cfg</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">JobRequiredKeys</span><span class="o">.</span><span class="n">extra_configs</span><span class="o">.</span><span class="n">value</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+
+        <span class="c1"># the current iteration number</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">curr_iter</span> <span class="o">=</span> <span class="kc">None</span></div>
+
+
+<div class="viewcode-block" id="BaseHook.run">
+<a class="viewcode-back" href="../../api/data_juicer_sandbox.hooks.html#data_juicer_sandbox.hooks.BaseHook.run">[文档]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context_infos</span><span class="p">:</span> <span class="n">ContextInfos</span><span class="p">):</span>
+        <span class="c1"># record the current iteration number</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">curr_iter</span> <span class="o">=</span> <span class="n">context_infos</span><span class="o">.</span><span class="n">iter</span>
+
+        <span class="c1"># update the args of this hook with input mappings and local settings</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_input_updating_hook</span><span class="p">(</span><span class="n">context_infos</span><span class="p">)</span>
+        <span class="c1"># updating export_path of dj config.</span>
+        <span class="c1"># we assume that for non-dj hooks, the output paths are specified by &quot;export_path&quot; field always.</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">inited_dj_cfg</span> <span class="ow">and</span> <span class="s1">&#39;export_path&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">inited_dj_cfg</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">inited_dj_cfg</span><span class="p">[</span><span class="s1">&#39;export_path&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">add_iter_subdir_to_paths</span><span class="p">(</span>
+                <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">inited_dj_cfg</span><span class="p">[</span><span class="s1">&#39;export_path&#39;</span><span class="p">]],</span> <span class="bp">self</span><span class="o">.</span><span class="n">curr_iter</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">extra_cfg</span> <span class="ow">and</span> <span class="s1">&#39;export_path&#39;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">extra_cfg</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">extra_cfg</span><span class="p">[</span><span class="s1">&#39;export_path&#39;</span><span class="p">],</span> <span class="nb">list</span><span class="p">):</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">extra_cfg</span><span class="p">[</span><span class="s1">&#39;export_path&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">add_iter_subdir_to_paths</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">extra_cfg</span><span class="p">[</span><span class="s1">&#39;export_path&#39;</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">curr_iter</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">extra_cfg</span><span class="p">[</span><span class="s1">&#39;export_path&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">add_iter_subdir_to_paths</span><span class="p">(</span>
+                    <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">extra_cfg</span><span class="p">[</span><span class="s1">&#39;export_path&#39;</span><span class="p">]],</span> <span class="bp">self</span><span class="o">.</span><span class="n">curr_iter</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+        <span class="n">outputs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">hook</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="n">outputs</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_output_recording_hook</span><span class="p">(</span><span class="n">outputs</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span></div>
+
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_input_updating_hook</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context_infos</span><span class="p">:</span> <span class="n">ContextInfos</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">specify_dj_and_extra_configs</span><span class="p">(</span><span class="n">allow_fail</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+        <span class="n">prev_dj_cfg</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dj_cfg</span><span class="p">)</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">dj_cfg</span> <span class="k">else</span> <span class="kc">None</span>
+        <span class="n">prev_extra_cfg</span> <span class="o">=</span> <span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">extra_cfg</span><span class="p">)</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">extra_cfg</span> <span class="k">else</span> <span class="kc">None</span>
+
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Previous DJ Cfg: </span><span class="si">{</span><span class="n">prev_dj_cfg</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Previous Extra Cfg: </span><span class="si">{</span><span class="n">prev_extra_cfg</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Local Settings: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">local_settings</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input Mappings: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">input_mapping</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="c1"># update configs according to local settings</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">local_settings</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">key_to_updated_parts</span> <span class="o">=</span> <span class="n">key</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
+            <span class="n">cfg_type</span> <span class="o">=</span> <span class="n">key_to_updated_parts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="c1"># check which config group to update</span>
+            <span class="k">if</span> <span class="n">cfg_type</span> <span class="o">==</span> <span class="n">JobRequiredKeys</span><span class="o">.</span><span class="n">dj_configs</span><span class="o">.</span><span class="n">value</span><span class="p">:</span>
+                <span class="n">target_config</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dj_cfg</span>
+            <span class="k">elif</span> <span class="n">cfg_type</span> <span class="o">==</span> <span class="n">JobRequiredKeys</span><span class="o">.</span><span class="n">extra_configs</span><span class="o">.</span><span class="n">value</span><span class="p">:</span>
+                <span class="n">target_config</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">extra_cfg</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The key </span><span class="si">{</span><span class="n">cfg_type</span><span class="si">}</span><span class="s1"> to update is not supported.&#39;</span><span class="p">)</span>
+            <span class="n">key_to_updated_parts</span> <span class="o">=</span> <span class="n">key_to_updated_parts</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+            <span class="c1"># update the target key</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">key_to_updated_parts</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">key_to_updated_parts</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+                    <span class="n">target_config</span> <span class="o">=</span> <span class="n">nested_query</span><span class="p">(</span><span class="n">target_config</span><span class="p">,</span> <span class="s1">&#39;.&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">key_to_updated_parts</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
+                <span class="n">target_config</span><span class="p">[</span><span class="n">key_to_updated_parts</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="n">value</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">cfg_type</span> <span class="o">==</span> <span class="n">JobRequiredKeys</span><span class="o">.</span><span class="n">dj_configs</span><span class="o">.</span><span class="n">value</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">dj_cfg</span> <span class="o">=</span> <span class="n">value</span>
+                <span class="k">elif</span> <span class="n">cfg_type</span> <span class="o">==</span> <span class="n">JobRequiredKeys</span><span class="o">.</span><span class="n">extra_configs</span><span class="o">.</span><span class="n">value</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">extra_cfg</span> <span class="o">=</span> <span class="n">value</span>
+
+        <span class="c1"># update configs according to input mapping and context_infos</span>
+        <span class="k">for</span> <span class="n">key_to_updated</span><span class="p">,</span> <span class="n">key_in_history</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">input_mapping</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">key_to_updated_parts</span> <span class="o">=</span> <span class="n">key_to_updated</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
+            <span class="n">key_in_history_parts</span> <span class="o">=</span> <span class="n">key_in_history</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
+            <span class="c1"># check if it&#39;s -1</span>
+            <span class="n">history_job_infos</span> <span class="o">=</span> <span class="n">context_infos</span>
+            <span class="k">if</span> <span class="n">key_in_history_parts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;-1&#39;</span><span class="p">:</span>
+                <span class="c1"># get the latest infos</span>
+                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">key_in_history_parts</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Need to specify the job result keys precisely for inputs to &#39;</span>
+                                     <span class="sa">f</span><span class="s1">&#39;find the target values. Only got [</span><span class="si">{</span><span class="n">key_in_history</span><span class="si">}</span><span class="s1">].&#39;</span><span class="p">)</span>
+                <span class="c1"># find the last non-empty job_infos</span>
+                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">context_infos</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Cannot find the previous non-empty job infos for [</span><span class="si">{</span><span class="n">key_in_history</span><span class="si">}</span><span class="s1">].&#39;</span><span class="p">)</span>
+                <span class="n">history_job_infos</span> <span class="o">=</span> <span class="n">context_infos</span><span class="o">.</span><span class="n">get_the_last_job_infos</span><span class="p">()</span>
+                <span class="n">key_in_history_parts</span> <span class="o">=</span> <span class="n">key_in_history_parts</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+            <span class="c1"># query target values</span>
+            <span class="n">target_value</span> <span class="o">=</span> <span class="n">history_job_infos</span><span class="p">[</span><span class="s1">&#39;.&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">key_in_history_parts</span><span class="p">)]</span>
+            <span class="c1"># check which config group to update</span>
+            <span class="n">cfg_type</span> <span class="o">=</span> <span class="n">key_to_updated_parts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">cfg_type</span> <span class="o">==</span> <span class="n">JobRequiredKeys</span><span class="o">.</span><span class="n">dj_configs</span><span class="o">.</span><span class="n">value</span><span class="p">:</span>
+                <span class="n">target_config</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dj_cfg</span>
+            <span class="k">elif</span> <span class="n">cfg_type</span> <span class="o">==</span> <span class="n">JobRequiredKeys</span><span class="o">.</span><span class="n">extra_configs</span><span class="o">.</span><span class="n">value</span><span class="p">:</span>
+                <span class="n">target_config</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">extra_cfg</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The key </span><span class="si">{</span><span class="n">key_to_updated_parts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> to update is not supported.&#39;</span><span class="p">)</span>
+            <span class="n">key_to_updated_parts</span> <span class="o">=</span> <span class="n">key_to_updated_parts</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+            <span class="c1"># update the target key</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">key_to_updated_parts</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">key_to_updated_parts</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+                    <span class="n">target_config</span> <span class="o">=</span> <span class="n">nested_query</span><span class="p">(</span><span class="n">target_config</span><span class="p">,</span> <span class="s1">&#39;.&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">key_to_updated_parts</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
+                <span class="n">target_config</span><span class="p">[</span><span class="n">key_to_updated_parts</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span> <span class="o">=</span> <span class="n">target_value</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">cfg_type</span> <span class="o">==</span> <span class="n">JobRequiredKeys</span><span class="o">.</span><span class="n">dj_configs</span><span class="o">.</span><span class="n">value</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">dj_cfg</span> <span class="o">=</span> <span class="n">target_value</span>
+                <span class="k">elif</span> <span class="n">cfg_type</span> <span class="o">==</span> <span class="n">JobRequiredKeys</span><span class="o">.</span><span class="n">extra_configs</span><span class="o">.</span><span class="n">value</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">extra_cfg</span> <span class="o">=</span> <span class="n">target_value</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">dj_cfg</span> <span class="o">!=</span> <span class="n">prev_dj_cfg</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">extra_cfg</span> <span class="o">!=</span> <span class="n">prev_extra_cfg</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Configs are updated according to input and local settings. Re-initializing them...&#39;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">specify_dj_and_extra_configs</span><span class="p">()</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_output_recording_hook</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">outputs</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">outputs</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">):</span>
+            <span class="c1"># multiple outputs</span>
+            <span class="n">outputs</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">outputs</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># single output</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">outputs</span><span class="p">,</span> <span class="nb">list</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">outputs</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="c1"># if there is only 1 ele in the returned list, unpack it</span>
+                <span class="n">outputs</span> <span class="o">=</span> <span class="n">outputs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">outputs</span> <span class="o">=</span> <span class="p">[</span><span class="n">outputs</span><span class="p">]</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_keys</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">output_keys</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">outputs</span><span class="p">)))</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">outputs</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">output_keys</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s1">&#39;## HOOK [</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">hook_type</span><span class="si">}</span><span class="s1">]: The number of outputs does not match the number of output keys. &#39;</span>
+                <span class="sa">f</span><span class="s1">&#39;Expected </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">output_keys</span><span class="p">)</span><span class="si">}</span><span class="s1"> but got </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">outputs</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span>
+            <span class="p">)</span>
+        <span class="n">curr_job_infos</span> <span class="o">=</span> <span class="n">JobInfos</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">meta_name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">output_keys</span><span class="p">,</span> <span class="n">outputs</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">curr_job_infos</span>
+
+<div class="viewcode-block" id="BaseHook.hook">
+<a class="viewcode-back" href="../../api/data_juicer_sandbox.hooks.html#data_juicer_sandbox.hooks.BaseHook.hook">[文档]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">hook</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span></div>
+
+
+<div class="viewcode-block" id="BaseHook.specify_dj_and_extra_configs">
+<a class="viewcode-back" href="../../api/data_juicer_sandbox.hooks.html#data_juicer_sandbox.hooks.BaseHook.specify_dj_and_extra_configs">[文档]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">specify_dj_and_extra_configs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">allow_fail</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+        <span class="c1"># prepare data-juicer config</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">dj_cfg</span><span class="p">:</span>
+            <span class="n">prev_dj_cfg</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dj_cfg</span>
+            <span class="n">prev_inited_dj_cfg</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">inited_dj_cfg</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Parsing Data-Juicer configs in the job.&#39;</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">dj_cfg</span> <span class="o">=</span> <span class="n">prepare_side_configs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dj_cfg</span><span class="p">)</span>
+                <span class="c1"># require Data-Juicer data process in some jobs</span>
+                <span class="c1"># so we need to init the Data-Juicer data process configs</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">inited_dj_cfg</span> <span class="o">=</span> <span class="n">get_init_configs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dj_cfg</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">dj_cfg</span> <span class="o">=</span> <span class="n">dict_to_namespace</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dj_cfg</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">allow_fail</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">dj_cfg</span> <span class="o">=</span> <span class="n">prev_dj_cfg</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">inited_dj_cfg</span> <span class="o">=</span> <span class="n">prev_inited_dj_cfg</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="n">e</span>
+
+        <span class="c1"># prepare extra configs</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">extra_cfg</span><span class="p">:</span>
+            <span class="n">prev_extra_cfg</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">extra_cfg</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Parsing extra configs in the job.&#39;</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">extra_cfg</span> <span class="o">=</span> <span class="n">prepare_side_configs</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">extra_cfg</span><span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">extra_cfg</span> <span class="o">=</span> <span class="n">dict_to_namespace</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">extra_cfg</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">allow_fail</span><span class="p">:</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">extra_cfg</span> <span class="o">=</span> <span class="n">prev_extra_cfg</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="n">e</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="ProbeViaAnalyzerHook">
+<a class="viewcode-back" href="../../api/data_juicer_sandbox.hooks.html#data_juicer_sandbox.hooks.ProbeViaAnalyzerHook">[文档]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">ProbeViaAnalyzerHook</span><span class="p">(</span><span class="n">BaseHook</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    The hook to probe dataset via Data-Juicer Analyzer.</span>
+
+<span class="sd">    Input:</span>
+<span class="sd">        - A data-juicer config.</span>
+<span class="sd">    Output:</span>
+<span class="sd">        - the path to export the analyzed dataset.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="ProbeViaAnalyzerHook.__init__">
+<a class="viewcode-back" href="../../api/data_juicer_sandbox.hooks.html#data_juicer_sandbox.hooks.ProbeViaAnalyzerHook.__init__">[文档]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">job_cfg</span><span class="p">,</span> <span class="n">watcher</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initialize the hook for probing the data via Analyzer</span>
+
+<span class="sd">        :param job_cfg: the job configs</span>
+<span class="sd">        :param watcher: for watching the result</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">ProbeViaAnalyzerHook</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">job_cfg</span><span class="p">,</span> <span class="n">watcher</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span>
+                                                   <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="ProbeViaAnalyzerHook.hook">
+<a class="viewcode-back" href="../../api/data_juicer_sandbox.hooks.html#data_juicer_sandbox.hooks.ProbeViaAnalyzerHook.hook">[文档]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">hook</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">analyzer</span> <span class="o">=</span> <span class="n">data_analyzer_factory</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">inited_dj_cfg</span><span class="p">)</span>
+        <span class="c1"># probe the data via Analyzer</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Begin to analyze data&#39;</span><span class="p">)</span>
+        <span class="n">analyzer</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+        <span class="n">analyzer_res</span> <span class="o">=</span> <span class="n">analyzer</span><span class="o">.</span><span class="n">overall_result</span>
+        <span class="c1"># drop string rows to avoid unaligned dtypes</span>
+        <span class="n">string_rows</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;unique&#39;</span><span class="p">,</span> <span class="s1">&#39;top&#39;</span><span class="p">,</span> <span class="s1">&#39;freq&#39;</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">row_name</span> <span class="ow">in</span> <span class="n">string_rows</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">row_name</span> <span class="ow">in</span> <span class="n">analyzer_res</span><span class="o">.</span><span class="n">index</span><span class="p">:</span>
+                <span class="n">analyzer_res</span> <span class="o">=</span> <span class="n">analyzer_res</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">row_name</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">watcher</span><span class="o">.</span><span class="n">watch</span><span class="p">(</span><span class="n">analyzer_res</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">meta_name</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">analyzer</span><span class="o">.</span><span class="n">exporter</span><span class="o">.</span><span class="n">export_path</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="ProbeViaModelInferHook">
+<a class="viewcode-back" href="../../api/data_juicer_sandbox.hooks.html#data_juicer_sandbox.hooks.ProbeViaModelInferHook">[文档]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">ProbeViaModelInferHook</span><span class="p">(</span><span class="n">BaseHook</span><span class="p">):</span>
+
+<div class="viewcode-block" id="ProbeViaModelInferHook.__init__">
+<a class="viewcode-back" href="../../api/data_juicer_sandbox.hooks.html#data_juicer_sandbox.hooks.ProbeViaModelInferHook.__init__">[文档]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">job_cfg</span><span class="p">,</span> <span class="n">watcher</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initialize the hook for probing the data via Model Infer</span>
+
+<span class="sd">        :param job_cfg: the job configs</span>
+<span class="sd">        :param watcher: for watching the result</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">ProbeViaModelInferHook</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">job_cfg</span><span class="p">,</span> <span class="n">watcher</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span>
+                                                     <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="ProbeViaModelInferHook.hook">
+<a class="viewcode-back" href="../../api/data_juicer_sandbox.hooks.html#data_juicer_sandbox.hooks.ProbeViaModelInferHook.hook">[文档]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">hook</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">data_executor</span> <span class="o">=</span> <span class="n">data_executor_factory</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">inited_dj_cfg</span><span class="p">)</span>
+        <span class="n">model_infer_executor</span> <span class="o">=</span> <span class="n">model_infer_evaluator_factory</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">extra_cfg</span><span class="p">)</span>
+        <span class="c1"># TODO</span>
+        <span class="c1"># probe the model (calling inference sub-pipeline) based on</span>
+        <span class="c1"># original data, such that we know what is the &quot;hard&quot; data for</span>
+        <span class="c1"># the model and how to process the data accordingly</span>
+        <span class="n">sampled_data</span> <span class="o">=</span> <span class="n">data_executor</span><span class="o">.</span><span class="n">sample_data</span><span class="p">(</span>
+            <span class="n">sample_ratio</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">inited_dj_cfg</span><span class="o">.</span><span class="n">data_probe_ratio</span><span class="p">,</span>
+            <span class="n">sample_algo</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">inited_dj_cfg</span><span class="o">.</span><span class="n">data_probe_algo</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">res_type</span><span class="p">,</span> <span class="n">infer_res</span> <span class="o">=</span> <span class="n">model_infer_executor</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+            <span class="n">model_infer_executor</span><span class="o">.</span><span class="n">model_config</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">],</span> <span class="n">sampled_data</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">watcher</span><span class="o">.</span><span class="n">watch</span><span class="p">(</span><span class="n">infer_res</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">meta_name</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">infer_res</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="GeneralProbeHook">
+<a class="viewcode-back" href="../../api/data_juicer_sandbox.hooks.html#data_juicer_sandbox.hooks.GeneralProbeHook">[文档]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">GeneralProbeHook</span><span class="p">(</span><span class="n">BaseHook</span><span class="p">):</span>
+<div class="viewcode-block" id="GeneralProbeHook.__init__">
+<a class="viewcode-back" href="../../api/data_juicer_sandbox.hooks.html#data_juicer_sandbox.hooks.GeneralProbeHook.__init__">[文档]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">job_cfg</span><span class="p">,</span> <span class="n">watcher</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">GeneralProbeHook</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">job_cfg</span><span class="p">,</span> <span class="n">watcher</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="GeneralProbeHook.hook">
+<a class="viewcode-back" href="../../api/data_juicer_sandbox.hooks.html#data_juicer_sandbox.hooks.GeneralProbeHook.hook">[文档]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">hook</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">data_probe</span> <span class="o">=</span> <span class="n">general_probe_factory</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">extra_cfg</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Begin to probe data.&#39;</span><span class="p">)</span>
+        <span class="n">ret</span> <span class="o">=</span> <span class="n">data_probe</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">ret</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="RefineRecipeViaKSigmaHook">
+<a class="viewcode-back" href="../../api/data_juicer_sandbox.hooks.html#data_juicer_sandbox.hooks.RefineRecipeViaKSigmaHook">[文档]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">RefineRecipeViaKSigmaHook</span><span class="p">(</span><span class="n">BaseHook</span><span class="p">):</span>
+
+<div class="viewcode-block" id="RefineRecipeViaKSigmaHook.__init__">
+<a class="viewcode-back" href="../../api/data_juicer_sandbox.hooks.html#data_juicer_sandbox.hooks.RefineRecipeViaKSigmaHook.__init__">[文档]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">job_cfg</span><span class="p">,</span> <span class="n">watcher</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initialize the hook for refining the recipe via K Sigma</span>
+
+<span class="sd">        :param job_cfg: the job configs</span>
+<span class="sd">        :param watcher: for watching the result</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">RefineRecipeViaKSigmaHook</span><span class="p">,</span>
+              <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">job_cfg</span><span class="p">,</span> <span class="n">watcher</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="RefineRecipeViaKSigmaHook.hook">
+<a class="viewcode-back" href="../../api/data_juicer_sandbox.hooks.html#data_juicer_sandbox.hooks.RefineRecipeViaKSigmaHook.hook">[文档]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">hook</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">path_k_sigma_recipe</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">extra_cfg</span><span class="o">.</span><span class="n">path_k_sigma_recipe</span>
+        <span class="c1"># use k-sigma strategy to modify the data recipe</span>
+        <span class="c1"># TODO: cannot import tools correctly if DJ is installed by pypi. Maybe we need</span>
+        <span class="c1">#       other importing methods.</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">data_juicer.tools.hpo.execute_hpo_3sigma</span><span class="w"> </span><span class="kn">import</span> <span class="n">modify_recipe_k_sigma</span>
+
+        <span class="n">modify_recipe_k_sigma</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">dj_cfg</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">watcher</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">meta_name</span><span class="p">),</span>
+                              <span class="n">path_k_sigma_recipe</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">path_k_sigma_recipe</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="RefineRecipeViaModelFeedbackHook">
+<a class="viewcode-back" href="../../api/data_juicer_sandbox.hooks.html#data_juicer_sandbox.hooks.RefineRecipeViaModelFeedbackHook">[文档]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">RefineRecipeViaModelFeedbackHook</span><span class="p">(</span><span class="n">BaseHook</span><span class="p">):</span>
+
+<div class="viewcode-block" id="RefineRecipeViaModelFeedbackHook.__init__">
+<a class="viewcode-back" href="../../api/data_juicer_sandbox.hooks.html#data_juicer_sandbox.hooks.RefineRecipeViaModelFeedbackHook.__init__">[文档]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">job_cfg</span><span class="p">,</span> <span class="n">watcher</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initialize the hook for refining the recipe via Model Feedback</span>
+
+<span class="sd">        :param job_cfg: the job configs</span>
+<span class="sd">        :param watcher: for watching the result</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">RefineRecipeViaModelFeedbackHook</span><span class="p">,</span>
+              <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">job_cfg</span><span class="p">,</span> <span class="n">watcher</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="RefineRecipeViaModelFeedbackHook.hook">
+<a class="viewcode-back" href="../../api/data_juicer_sandbox.hooks.html#data_juicer_sandbox.hooks.RefineRecipeViaModelFeedbackHook.hook">[文档]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">hook</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="c1"># TODO</span>
+        <span class="c1"># use model-feedback-based strategy to modify the data recipe,</span>
+        <span class="c1"># e.g., more mapper on the &quot;hard&quot; or &quot;sensitive&quot; data, those were</span>
+        <span class="c1"># ranked by user-interested measurement after model inference</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">sandbox_cfg</span><span class="o">.</span><span class="n">path_model_feedback_recipe</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="c1"># modify_recipe_model_feedback(</span>
+            <span class="c1">#     self.sandbox_cfg,</span>
+            <span class="c1">#     self.watcher.query(&quot;measure_on_infer_res&quot;),</span>
+            <span class="c1">#     self.sandbox_cfg.path_model_feedback_recipe)</span>
+            <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span><span class="s1">&#39;Not implemented yet.&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">None</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="ProcessDataHook">
+<a class="viewcode-back" href="../../api/data_juicer_sandbox.hooks.html#data_juicer_sandbox.hooks.ProcessDataHook">[文档]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">ProcessDataHook</span><span class="p">(</span><span class="n">BaseHook</span><span class="p">):</span>
+
+<div class="viewcode-block" id="ProcessDataHook.__init__">
+<a class="viewcode-back" href="../../api/data_juicer_sandbox.hooks.html#data_juicer_sandbox.hooks.ProcessDataHook.__init__">[文档]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">job_cfg</span><span class="p">,</span> <span class="n">watcher</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initialize the hook for processing the data via Data-Juicer</span>
+
+<span class="sd">        :param job_cfg: the job configs</span>
+<span class="sd">        :param watcher: for watching the result</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">ProcessDataHook</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">job_cfg</span><span class="p">,</span> <span class="n">watcher</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span>
+                                              <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="ProcessDataHook.hook">
+<a class="viewcode-back" href="../../api/data_juicer_sandbox.hooks.html#data_juicer_sandbox.hooks.ProcessDataHook.hook">[文档]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">hook</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">data_executor</span> <span class="o">=</span> <span class="n">data_executor_factory</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">inited_dj_cfg</span><span class="p">)</span>
+        <span class="c1"># basic routine to process data, users can customize this freely</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Begin to process the data with given dj recipe&#39;</span><span class="p">)</span>
+        <span class="n">data_executor</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">inited_dj_cfg</span><span class="o">.</span><span class="n">export_path</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="DataPoolManipulationHook">
+<a class="viewcode-back" href="../../api/data_juicer_sandbox.hooks.html#data_juicer_sandbox.hooks.DataPoolManipulationHook">[文档]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">DataPoolManipulationHook</span><span class="p">(</span><span class="n">BaseHook</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Hook for data pool manipulation, including construction, combination, ranking, etc.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="DataPoolManipulationHook.__init__">
+<a class="viewcode-back" href="../../api/data_juicer_sandbox.hooks.html#data_juicer_sandbox.hooks.DataPoolManipulationHook.__init__">[文档]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">job_cfg</span><span class="p">,</span> <span class="n">watcher</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">DataPoolManipulationHook</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">job_cfg</span><span class="p">,</span> <span class="n">watcher</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="DataPoolManipulationHook.hook">
+<a class="viewcode-back" href="../../api/data_juicer_sandbox.hooks.html#data_juicer_sandbox.hooks.DataPoolManipulationHook.hook">[文档]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">hook</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">data_pool_manipulator</span> <span class="o">=</span> <span class="n">data_pool_manipulator_factory</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">extra_cfg</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Begin to manipulate data pools.&#39;</span><span class="p">)</span>
+        <span class="n">ret</span> <span class="o">=</span> <span class="n">data_pool_manipulator</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">ret</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="GeneralDataExecutorHook">
+<a class="viewcode-back" href="../../api/data_juicer_sandbox.hooks.html#data_juicer_sandbox.hooks.GeneralDataExecutorHook">[文档]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">GeneralDataExecutorHook</span><span class="p">(</span><span class="n">BaseHook</span><span class="p">):</span>
+<div class="viewcode-block" id="GeneralDataExecutorHook.__init__">
+<a class="viewcode-back" href="../../api/data_juicer_sandbox.hooks.html#data_juicer_sandbox.hooks.GeneralDataExecutorHook.__init__">[文档]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">job_cfg</span><span class="p">,</span> <span class="n">watcher</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">GeneralDataExecutorHook</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">job_cfg</span><span class="p">,</span> <span class="n">watcher</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="GeneralDataExecutorHook.hook">
+<a class="viewcode-back" href="../../api/data_juicer_sandbox.hooks.html#data_juicer_sandbox.hooks.GeneralDataExecutorHook.hook">[文档]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">hook</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">data_executor</span> <span class="o">=</span> <span class="n">general_data_executor_factory</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">extra_cfg</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Begin to execute general data executor.&#39;</span><span class="p">)</span>
+        <span class="n">ret</span> <span class="o">=</span> <span class="n">data_executor</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">ret</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="TrainModelHook">
+<a class="viewcode-back" href="../../api/data_juicer_sandbox.hooks.html#data_juicer_sandbox.hooks.TrainModelHook">[文档]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">TrainModelHook</span><span class="p">(</span><span class="n">BaseHook</span><span class="p">):</span>
+
+<div class="viewcode-block" id="TrainModelHook.__init__">
+<a class="viewcode-back" href="../../api/data_juicer_sandbox.hooks.html#data_juicer_sandbox.hooks.TrainModelHook.__init__">[文档]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">job_cfg</span><span class="p">,</span> <span class="n">watcher</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initialize the hook for model training</span>
+
+<span class="sd">        :param job_cfg: the job configs</span>
+<span class="sd">        :param watcher: for watching the result</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">TrainModelHook</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">job_cfg</span><span class="p">,</span> <span class="n">watcher</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="TrainModelHook.hook">
+<a class="viewcode-back" href="../../api/data_juicer_sandbox.hooks.html#data_juicer_sandbox.hooks.TrainModelHook.hook">[文档]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">hook</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="c1"># try to update train dataset</span>
+        <span class="n">model_trainer</span> <span class="o">=</span> <span class="n">model_train_executor_factory</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">extra_cfg</span><span class="p">,</span>
+                                                     <span class="n">watcher</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">watcher</span><span class="p">)</span>
+        <span class="c1"># basic routine to train model via the processed data,</span>
+        <span class="c1"># users can customize this freely</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Begin to train the model with given model config&#39;</span><span class="p">)</span>
+        <span class="c1"># update training dataset path</span>
+        <span class="n">ret</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+            <span class="n">model_trainer</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">model_trainer</span><span class="o">.</span><span class="n">model_config</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">],</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">ret</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="InferModelHook">
+<a class="viewcode-back" href="../../api/data_juicer_sandbox.hooks.html#data_juicer_sandbox.hooks.InferModelHook">[文档]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">InferModelHook</span><span class="p">(</span><span class="n">BaseHook</span><span class="p">):</span>
+
+<div class="viewcode-block" id="InferModelHook.__init__">
+<a class="viewcode-back" href="../../api/data_juicer_sandbox.hooks.html#data_juicer_sandbox.hooks.InferModelHook.__init__">[文档]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">job_cfg</span><span class="p">,</span> <span class="n">watcher</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initialize the hook for model training</span>
+
+<span class="sd">        :param job_cfg: the job configs</span>
+<span class="sd">        :param watcher: for watching the result</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">InferModelHook</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">job_cfg</span><span class="p">,</span> <span class="n">watcher</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="InferModelHook.hook">
+<a class="viewcode-back" href="../../api/data_juicer_sandbox.hooks.html#data_juicer_sandbox.hooks.InferModelHook.hook">[文档]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">hook</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">model_infer</span> <span class="o">=</span> <span class="n">model_infer_executor_factory</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">extra_cfg</span><span class="p">,</span>
+                                                   <span class="n">watcher</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">watcher</span><span class="p">)</span>
+
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Begin to infer the model with given model config&#39;</span><span class="p">)</span>
+        <span class="n">ret</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">model_infer</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">model_infer</span><span class="o">.</span><span class="n">model_config</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">],</span>
+                                          <span class="o">**</span><span class="n">kwargs</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">ret</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="EvaluateDataHook">
+<a class="viewcode-back" href="../../api/data_juicer_sandbox.hooks.html#data_juicer_sandbox.hooks.EvaluateDataHook">[文档]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">EvaluateDataHook</span><span class="p">(</span><span class="n">BaseHook</span><span class="p">):</span>
+
+<div class="viewcode-block" id="EvaluateDataHook.__init__">
+<a class="viewcode-back" href="../../api/data_juicer_sandbox.hooks.html#data_juicer_sandbox.hooks.EvaluateDataHook.__init__">[文档]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">job_cfg</span><span class="p">,</span> <span class="n">watcher</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initialize the hook for data evaluation</span>
+
+<span class="sd">        :param job_cfg: the job configs</span>
+<span class="sd">        :param watcher: for watching the result</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">EvaluateDataHook</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">job_cfg</span><span class="p">,</span> <span class="n">watcher</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span>
+                                               <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="EvaluateDataHook.hook">
+<a class="viewcode-back" href="../../api/data_juicer_sandbox.hooks.html#data_juicer_sandbox.hooks.EvaluateDataHook.hook">[文档]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">hook</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">data_evaluator</span> <span class="o">=</span> <span class="n">data_evaluator_factory</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">extra_cfg</span><span class="p">)</span>
+        <span class="c1"># basic routine to evaluate the given data,</span>
+        <span class="c1"># users can customize this freely</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Begin to evaluate the data with given evaluator config&#39;</span><span class="p">)</span>
+        <span class="n">eval_res</span> <span class="o">=</span> <span class="n">data_evaluator</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">eval_type</span><span class="o">=</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">watcher</span><span class="o">.</span><span class="n">watch</span><span class="p">(</span><span class="n">eval_res</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">meta_name</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">eval_res</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="EvaluateModelHook">
+<a class="viewcode-back" href="../../api/data_juicer_sandbox.hooks.html#data_juicer_sandbox.hooks.EvaluateModelHook">[文档]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">EvaluateModelHook</span><span class="p">(</span><span class="n">BaseHook</span><span class="p">):</span>
+
+<div class="viewcode-block" id="EvaluateModelHook.__init__">
+<a class="viewcode-back" href="../../api/data_juicer_sandbox.hooks.html#data_juicer_sandbox.hooks.EvaluateModelHook.__init__">[文档]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">job_cfg</span><span class="p">,</span> <span class="n">watcher</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initialize the hook for model evaluation</span>
+
+<span class="sd">        :param job_cfg: the job configs</span>
+<span class="sd">        :param watcher: for watching the result</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">EvaluateModelHook</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">job_cfg</span><span class="p">,</span> <span class="n">watcher</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span>
+                                                <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="EvaluateModelHook.hook">
+<a class="viewcode-back" href="../../api/data_juicer_sandbox.hooks.html#data_juicer_sandbox.hooks.EvaluateModelHook.hook">[文档]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">hook</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">model_evaluator</span> <span class="o">=</span> <span class="n">model_evaluator_factory</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">extra_cfg</span><span class="p">)</span>
+        <span class="c1"># basic routine to evaluate the given model,</span>
+        <span class="c1"># users can customize this freely</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Begin to evaluate the model with given evaluator config&#39;</span><span class="p">)</span>
+        <span class="n">eval_res</span> <span class="o">=</span> <span class="n">model_evaluator</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">watcher</span><span class="o">.</span><span class="n">watch</span><span class="p">(</span><span class="n">eval_res</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">meta_name</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">eval_res</span></div>
+</div>
+
+
+
+<span class="n">HOOK_MAPPING</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="c1"># Data/Model Probe hooks</span>
+    <span class="s1">&#39;ProbeViaAnalyzerHook&#39;</span><span class="p">:</span> <span class="n">ProbeViaAnalyzerHook</span><span class="p">,</span>
+    <span class="s1">&#39;ProbeViaModelInferHook&#39;</span><span class="p">:</span> <span class="n">ProbeViaModelInferHook</span><span class="p">,</span>
+    <span class="s1">&#39;GeneralProbeHook&#39;</span><span class="p">:</span> <span class="n">GeneralProbeHook</span><span class="p">,</span>
+
+    <span class="c1"># Data-Recipe Refinement hooks</span>
+    <span class="s1">&#39;RefineRecipeViaKSigmaHook&#39;</span><span class="p">:</span> <span class="n">RefineRecipeViaKSigmaHook</span><span class="p">,</span>
+    <span class="s1">&#39;RefineRecipeViaModelFeedbackHook&#39;</span><span class="p">:</span> <span class="n">RefineRecipeViaModelFeedbackHook</span><span class="p">,</span>
+
+    <span class="c1"># Data/Model Execution hooks</span>
+    <span class="s1">&#39;ProcessDataHook&#39;</span><span class="p">:</span> <span class="n">ProcessDataHook</span><span class="p">,</span>
+    <span class="s1">&#39;DataPoolManipulationHook&#39;</span><span class="p">:</span> <span class="n">DataPoolManipulationHook</span><span class="p">,</span>
+    <span class="s1">&#39;GeneralDataExecutorHook&#39;</span><span class="p">:</span> <span class="n">GeneralDataExecutorHook</span><span class="p">,</span>
+    <span class="s1">&#39;TrainModelHook&#39;</span><span class="p">:</span> <span class="n">TrainModelHook</span><span class="p">,</span>
+    <span class="s1">&#39;InferModelHook&#39;</span><span class="p">:</span> <span class="n">InferModelHook</span><span class="p">,</span>
+
+    <span class="c1"># Evaluation hooks</span>
+    <span class="s1">&#39;EvaluateDataHook&#39;</span><span class="p">:</span> <span class="n">EvaluateDataHook</span><span class="p">,</span>
+    <span class="s1">&#39;EvaluateModelHook&#39;</span><span class="p">:</span> <span class="n">EvaluateModelHook</span><span class="p">,</span>
+<span class="p">}</span>
+
+
+<div class="viewcode-block" id="register_hook">
+<a class="viewcode-back" href="../../api/data_juicer_sandbox.hooks.html#data_juicer_sandbox.hooks.register_hook">[文档]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">register_hook</span><span class="p">(</span><span class="n">job_cfg</span><span class="p">,</span> <span class="n">watcher</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">job_cfg</span><span class="o">.</span><span class="n">hook</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">HOOK_MAPPING</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s1">&#39;Undefined hook: [</span><span class="si">{job_cfg.hook}</span><span class="s1">].&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">HOOK_MAPPING</span><span class="p">[</span><span class="n">job_cfg</span><span class="o">.</span><span class="n">hook</span><span class="p">](</span><span class="n">job_cfg</span><span class="p">,</span> <span class="n">watcher</span><span class="p">)</span></div>
+
+</pre></div>
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2024, Data-Juicer Team.
+      <br/>
+    
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    由 <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.2.3创建。
+    <br/>
+  </p>
+</div>
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  使用 <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.16.1构建.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

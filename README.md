@@ -6,7 +6,7 @@ A Feedback-Driven Suite for Multimodal Data-Model Co-development.
 
 ## Documentation
 
-Detail documentations can be found [here](https://datajuicer.github.io/data-juicer/en/main/docs/Sandbox.html) .
+Detailed documentation can be found [here](https://datajuicer.github.io/data-juicer-sandbox/en/main/docs_index.html).
 
 ## Reference
 
